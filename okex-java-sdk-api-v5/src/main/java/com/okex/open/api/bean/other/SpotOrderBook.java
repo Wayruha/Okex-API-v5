@@ -2,13 +2,17 @@ package com.okex.open.api.bean.other;
 
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Comparator;
 import java.util.List;
 
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SpotOrderBook {
 
 

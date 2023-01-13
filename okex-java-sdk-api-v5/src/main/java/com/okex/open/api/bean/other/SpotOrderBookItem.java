@@ -1,8 +1,11 @@
 package com.okex.open.api.bean.other;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.okex.open.api.utils.OrderBookItemConverter;
 import lombok.Data;
 
 @Data
+@JsonDeserialize(converter = OrderBookItemConverter.class)
 public class SpotOrderBookItem implements OrderBookItem<String> {
     private final String price;
     private final String size;

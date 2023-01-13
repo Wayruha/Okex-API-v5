@@ -11,7 +11,6 @@ import net.sf.json.JSONObject;
 import okhttp3.*;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
-import org.joda.time.DateTime;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -28,11 +27,11 @@ public class WebSocketClient {
     private static Boolean isConnect = false;
     private static String sign;
     private final static HashFunction crc32 = Hashing.crc32();
-    private static Map<String,Optional<SpotOrderBook>> bookMap = new HashMap<>();
+    private static Map<String, Optional<SpotOrderBook>> bookMap = new HashMap<>();
     private static Logger logger = Logger.getLogger(TradeChannelTest.class);
+
     public WebSocketClient() {
     }
-
 
 
     //与服务器建立连接，参数为服务器的URL
@@ -88,7 +87,7 @@ public class WebSocketClient {
             @Override
             public void onMessage(final WebSocket webSocket, final String bytes) {
                 //测试服务器返回的字节
-                final String byteString=bytes.toString();
+                final String byteString = bytes.toString();
 
                 final String s = byteString;
 
@@ -103,7 +102,6 @@ public class WebSocketClient {
         });
         return webSocket;
     }
-
 
 
     private static void isLogin(String s) {
@@ -139,68 +137,67 @@ public class WebSocketClient {
 
     //登录
     public static void login(String apiKey, String passPhrase, String secretKey) {
-        String timestamp = DateTime.now().getMillis() / 1000+ "";
+        String timestamp = Instant.now().toEpochMilli() / 1000 + "";
         String message = timestamp + "GET" + "/users/self/verify";
         sign = sha256_HMAC(message, secretKey);
-        String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[{" + "\"apiKey\"" + ":"+ "\"" + apiKey + "\"" + "," + "\"passphrase\"" + ":" + "\"" + passPhrase + "\"" + ","+ "\"timestamp\"" + ":"  + "\"" + timestamp + "\"" + ","+ "\"sign\"" + ":"  + "\"" + sign + "\"" + "}]}";
+        String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[{" + "\"apiKey\"" + ":" + "\"" + apiKey + "\"" + "," + "\"passphrase\"" + ":" + "\"" + passPhrase + "\"" + "," + "\"timestamp\"" + ":" + "\"" + timestamp + "\"" + "," + "\"sign\"" + ":" + "\"" + sign + "\"" + "}]}";
         sendMessage(str);
     }
 
 
     //ws下单 Place Order
-    public static void wsPlaceOrder(List<Map> list,String id) {
+    public static void wsPlaceOrder(List<Map> list, String id) {
         String s = listToJson(list);
-        String str = "{\"id\": \""+id+"\",\"op\": \"order\", \"args\":" + s + "}";
+        String str = "{\"id\": \"" + id + "\",\"op\": \"order\", \"args\":" + s + "}";
 
         if (null != webSocket)
             sendMessage(str);
     }
 
     //ws批量下单 Place Multiple Orders
-    public static void wsPlaceMultipleOrders(List<Map> list,String id) {
+    public static void wsPlaceMultipleOrders(List<Map> list, String id) {
         String s = listToJson(list);
-        String str = "{\"id\": \""+id+"\",\"op\": \"batch-orders\", \"args\":" + s + "}";
+        String str = "{\"id\": \"" + id + "\",\"op\": \"batch-orders\", \"args\":" + s + "}";
 
         if (null != webSocket)
             sendMessage(str);
     }
 
     //ws撤单 Cancel Order
-    public static void wsCancelOrder(List<Map> list,String id) {
+    public static void wsCancelOrder(List<Map> list, String id) {
         String s = listToJson(list);
-        String str = "{\"id\": \""+id+"\",\"op\": \"cancel-order\", \"args\":" + s + "}";
+        String str = "{\"id\": \"" + id + "\",\"op\": \"cancel-order\", \"args\":" + s + "}";
 
         if (null != webSocket)
             sendMessage(str);
     }
 
     //ws批量撤单 Cancel Order
-    public static void wsCancelMultipleOrders(List<Map> list,String id) {
+    public static void wsCancelMultipleOrders(List<Map> list, String id) {
         String s = listToJson(list);
-        String str = "{\"id\": \""+id+"\",\"op\": \"batch-cancel-orders\", \"args\":" + s + "}";
+        String str = "{\"id\": \"" + id + "\",\"op\": \"batch-cancel-orders\", \"args\":" + s + "}";
 
         if (null != webSocket)
             sendMessage(str);
     }
 
     //ws改单 Amend Order
-    public static void wsAmendOrder(List<Map> list,String id) {
+    public static void wsAmendOrder(List<Map> list, String id) {
         String s = listToJson(list);
-        String str = "{\"id\": \""+id+"\",\"op\": \"amend-order\", \"args\":" + s + "}";
+        String str = "{\"id\": \"" + id + "\",\"op\": \"amend-order\", \"args\":" + s + "}";
 
         if (null != webSocket)
             sendMessage(str);
     }
 
     //ws批量改单 Amend Multiple Orders
-    public static void wsAmendMultipleOrders(List<Map> list,String id) {
+    public static void wsAmendMultipleOrders(List<Map> list, String id) {
         String s = listToJson(list);
-        String str = "{\"id\": \""+id+"\",\"op\": \"batch-amend-orders\", \"args\":" + s + "}";
+        String str = "{\"id\": \"" + id + "\",\"op\": \"batch-amend-orders\", \"args\":" + s + "}";
 
         if (null != webSocket)
             sendMessage(str);
     }
-
 
 
     private static void sendMessage(String str) {

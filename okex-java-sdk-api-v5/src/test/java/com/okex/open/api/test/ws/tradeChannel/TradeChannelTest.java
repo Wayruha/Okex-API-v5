@@ -3,7 +3,6 @@ package com.okex.open.api.test.ws.tradeChannel;
 
 import com.okex.open.api.test.ws.tradeChannel.config.WebSocketClient;
 import com.okex.open.api.test.ws.tradeChannel.config.WebSocketConfig;
-import org.apache.commons.compress.utils.Lists;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

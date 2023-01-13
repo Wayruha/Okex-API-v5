@@ -2,9 +2,13 @@ package com.okex.open.api.service.publicData.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.pub.Instrument;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.publicData.PublicDataAPIService;
+
+import java.util.List;
 
 public class PublicDataAPIServiceImpl implements PublicDataAPIService {
     private APIClient client;
@@ -17,7 +21,7 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
     @Override
-    public JSONObject getInstruments(String instType, String uly,String instFamily, String instId) {
+    public OkexResponse<List<Instrument>> getInstruments(String instType, String uly, String instFamily, String instId) {
         return this.client.executeSync(this.api.getInstruments(instType, uly,instFamily, instId));
     }
 

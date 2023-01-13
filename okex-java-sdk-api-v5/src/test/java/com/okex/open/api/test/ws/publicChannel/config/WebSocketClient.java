@@ -1,6 +1,5 @@
 package com.okex.open.api.test.ws.publicChannel.config;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -18,7 +17,6 @@ import net.sf.json.JSONObject;
 import okhttp3.*;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
-import org.joda.time.DateTime;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -179,7 +177,7 @@ public class WebSocketClient {
                     JSONObject data = JSONObject.fromObject(dataArr.get(0));
 
                     Long pushTimestamp=null;
-                    Long localTimestamp = DateTime.now().getMillis();
+                    Long localTimestamp = Instant.now().toEpochMilli();
                     Long timing = null;
 
 
@@ -241,7 +239,7 @@ public class WebSocketClient {
 
     //登录
     public static void login(String apiKey, String passPhrase, String secretKey) {
-        String timestamp = DateTime.now().getMillis() / 1000+ "";
+        String timestamp = Instant.now().toEpochMilli() / 1000+ "";
         String message = timestamp + "GET" + "/users/self/verify";
         sign = sha256_HMAC(message, secretKey);
         String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[{" + "\"apiKey\"" + ":"+ "\"" + apiKey + "\"" + "," + "\"passphrase\"" + ":" + "\"" + passPhrase + "\"" + ","+ "\"timestamp\"" + ":"  + "\"" + timestamp + "\"" + ","+ "\"sign\"" + ":"  + "\"" + sign + "\"" + "}]}";

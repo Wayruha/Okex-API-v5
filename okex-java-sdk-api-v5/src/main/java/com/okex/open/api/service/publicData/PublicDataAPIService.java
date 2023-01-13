@@ -2,14 +2,18 @@ package com.okex.open.api.service.publicData;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.pub.Instrument;
+import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+import java.util.List;
+
 public interface PublicDataAPIService {
 
     //获取交易产品基础信息 Get Instruments
-    JSONObject getInstruments(String instType,String uly,String instFamily, String instId);
+    OkexResponse<List<Instrument>> getInstruments(String instType, String uly, String instFamily, String instId);
 
     //获取交割和行权记录 Get Delivery/Exercise History
     JSONObject getDeliveryExerciseHistory(String instType,String uly,String instFamily,String after,String before,String limit);

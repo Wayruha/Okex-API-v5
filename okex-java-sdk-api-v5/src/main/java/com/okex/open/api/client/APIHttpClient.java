@@ -60,10 +60,6 @@ public class APIHttpClient {
         clientBuilder.addInterceptor((Interceptor.Chain chain) -> {
             final Request.Builder requestBuilder = chain.request().newBuilder();
             final String timestamp = DateUtils.getUnixTime();
-            //打印首行时间戳
-//            System.out.println("时间戳timestamp={" + timestamp + "}");
-//              设置模拟盘请求头
-//            String simulated = "1";
             requestBuilder.headers(this.headers(chain.request(), timestamp));
             final Request request = requestBuilder.build();
             if (this.config.isPrint()) {
@@ -82,16 +78,12 @@ public class APIHttpClient {
         builder.add(APIConstants.COOKIE, this.getCookie());
 
         if (StringUtils.isNotEmpty(this.credentials.getSecretKey())) {
-            //拼接上秘钥，密码，签名和时间戳
             builder.add(HttpHeadersEnum.OK_ACCESS_KEY.header(), this.credentials.getApiKey());
             builder.add(HttpHeadersEnum.OK_ACCESS_SIGN.header(), this.sign(request, timestamp));
             builder.add(HttpHeadersEnum.OK_ACCESS_TIMESTAMP.header(), timestamp);
             builder.add(HttpHeadersEnum.OK_ACCESS_PASSPHRASE.header(), this.credentials.getPassphrase());
             builder.add("x-simulated-trading","1");
-        }else{
-//            builder.add("x-simulated-trading","1");
         }
-
         return builder.build();
     }
 
@@ -107,7 +99,6 @@ public class APIHttpClient {
         try {
             sign = HmacSHA256Base64Utils.sign(timestamp, this.method(request), this.requestPath(request),
                     this.queryString(request), this.body(request), this.credentials.getSecretKey());
-            //System.out.println("签名字符串："+timestamp+this.method(request)+this.requestPath(request)+this.queryString(request)+this.body(request));
         } catch (final IOException e) {
             throw new APIException("Request get body io exception.", e);
         } catch (final CloneNotSupportedException e) {
@@ -117,15 +108,12 @@ public class APIHttpClient {
         }
         return sign;
     }
-    //返回请求路径url
     private String url(final Request request) {
         return request.url().toString();
     }
-    //将请求方法转变为大写，并返回
     private String method(final Request request) {
         return request.method().toUpperCase();
     }
-    //返回请求路径
     private String requestPath(final Request request) {
         String url = this.url(request);
         url = url.replace(this.config.getEndpoint(), APIConstants.EMPTY);
@@ -142,9 +130,7 @@ public class APIHttpClient {
     private String queryString(final Request request) {
         final String url = this.url(request);
         request.body();
-        //请求参数为空字符串
         String queryString = APIConstants.EMPTY;
-        //如果URL中包含？即存在参数的拼接
         if (url.contains(APIConstants.QUESTION)) {
             queryString = url.substring(url.lastIndexOf(APIConstants.QUESTION) + 1);
         }
@@ -178,7 +164,6 @@ public class APIHttpClient {
 
 
         requestInfo.append("\n\tRequest").append("(").append(DateUtils.timeToString(null, 4)).append("):");
-       //拼接Url
         requestInfo.append("\n\t\t").append("Url: ").append(this.url(request));
         requestInfo.append("\n\t\t").append("Method: ").append(method);
         requestInfo.append("\n\t\t").append("Headers: ");

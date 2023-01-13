@@ -1,34 +1,24 @@
 package com.okex.open.api.test.ws.privateChannel.config;
 
 import com.alibaba.fastjson.JSONArray;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
-import com.okex.open.api.bean.other.OrderBookItem;
 import com.okex.open.api.bean.other.SpotOrderBook;
-import com.okex.open.api.bean.other.SpotOrderBookDiff;
-import com.okex.open.api.bean.other.SpotOrderBookItem;
 import com.okex.open.api.enums.CharsetEnum;
 import com.okex.open.api.test.ws.privateChannel.PrivateChannelTest;
 import com.okex.open.api.utils.DateUtils;
-import lombok.Data;
 import net.sf.json.JSONObject;
 import okhttp3.*;
-import okio.ByteString;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
-import org.joda.time.DateTime;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 
 public class WebSocketClient {
@@ -37,11 +27,11 @@ public class WebSocketClient {
     private static Boolean isConnect = false;
     private static String sign;
     private final static HashFunction crc32 = Hashing.crc32();
-    private static Map<String,Optional<SpotOrderBook>> bookMap = new HashMap<>();
+    private static Map<String, Optional<SpotOrderBook>> bookMap = new HashMap<>();
     private static Logger logger = Logger.getLogger(PrivateChannelTest.class);
+
     public WebSocketClient() {
     }
-
 
 
     //与服务器建立连接，参数为服务器的URL
@@ -97,7 +87,7 @@ public class WebSocketClient {
             @Override
             public void onMessage(final WebSocket webSocket, final String bytes) {
                 //测试服务器返回的字节
-                final String byteString=bytes.toString();
+                final String byteString = bytes.toString();
 
                 final String s = byteString;
 
@@ -112,7 +102,6 @@ public class WebSocketClient {
         });
         return webSocket;
     }
-
 
 
     private static void isLogin(String s) {
@@ -148,10 +137,10 @@ public class WebSocketClient {
 
     //登录
     public static void login(String apiKey, String passPhrase, String secretKey) {
-        String timestamp = DateTime.now().getMillis() / 1000+ "";
+        String timestamp = Instant.now().toEpochMilli() / 1000 + "";
         String message = timestamp + "GET" + "/users/self/verify";
         sign = sha256_HMAC(message, secretKey);
-        String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[{" + "\"apiKey\"" + ":"+ "\"" + apiKey + "\"" + "," + "\"passphrase\"" + ":" + "\"" + passPhrase + "\"" + ","+ "\"timestamp\"" + ":"  + "\"" + timestamp + "\"" + ","+ "\"sign\"" + ":"  + "\"" + sign + "\"" + "}]}";
+        String str = "{\"op\"" + ":" + "\"login\"" + "," + "\"args\"" + ":" + "[{" + "\"apiKey\"" + ":" + "\"" + apiKey + "\"" + "," + "\"passphrase\"" + ":" + "\"" + passPhrase + "\"" + "," + "\"timestamp\"" + ":" + "\"" + timestamp + "\"" + "," + "\"sign\"" + ":" + "\"" + sign + "\"" + "}]}";
         sendMessage(str);
     }
 
