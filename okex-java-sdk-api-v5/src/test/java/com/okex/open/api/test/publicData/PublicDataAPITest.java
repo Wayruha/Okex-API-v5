@@ -3,6 +3,7 @@ package com.okex.open.api.test.publicData;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.Instrument;
+import com.okex.open.api.bean.pub.PositionTier;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.publicData.PublicDataAPIService;
 import com.okex.open.api.service.publicData.impl.PublicDataAPIServiceImpl;
@@ -31,7 +32,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getInstruments() {
-        OkexResponse<List<Instrument>> result = publicDataAPIService.getInstruments("SPOT", null, "", null);
+        OkexResponse<List<Instrument>> result = publicDataAPIService.getInstruments("SPOT",null,"",null);
         toResultString(LOG, "result", result);
 
     }
@@ -162,7 +163,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getTier() {
-        JSONObject result = publicDataAPIService.getTier("FUTURES", "BTC-USDT", "", null, "isolated", null);
+        OkexResponse<List<PositionTier>> result = publicDataAPIService.getTier("FUTURES","BTC-USDT","",null,"isolated",null, null);
         toResultString(LOG, "result", result);
     }
 

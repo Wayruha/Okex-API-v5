@@ -1,15 +1,19 @@
 package com.okex.open.api.service.funding.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.funding.Currency;
+import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.List;
 
-interface FundingAPI {
+
+public interface FundingAPI {
 
     //获取币种列表 Get Currencies
     @GET("/api/v5/asset/currencies")
-    Call<JSONObject> getCurrencies();
+    Call<OkexResponse<List<Currency>>> getCurrencies();
 
     //获取资金账户余额
     @GET("/api/v5/asset/balances")

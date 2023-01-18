@@ -1,12 +1,9 @@
 package com.okex.open.api.service.publicData;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.Instrument;
+import com.okex.open.api.bean.pub.PositionTier;
 import com.okex.open.api.service.OkexResponse;
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -46,10 +43,10 @@ public interface PublicDataAPIService {
     JSONObject getLiquidationOrders(String instType,String mgnMode,String instId,String ccy,String uly,String instFamily,String alias,String state,String before,String after,String limit);
 
     //获取标记价格 Get Mark Price
-    JSONObject getMarkPrice(String instType,String uly,String instFamily,String instId);
+    JSONObject getMarkPrice(String instType, String uly, String instFamily, String instId);
 
     //获取合约衍生品仓位档位  Get Position Tiers
-    JSONObject getTier(String instType, String uly, String instFamily, String instId, String tdMode, String tier);
+    OkexResponse<List<PositionTier>> getTier(String instType, String uly, String instFamily, String instId, String tdMode, String tier, String ccy);
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
     JSONObject getInterestRateLoanQuota();

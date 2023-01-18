@@ -1,8 +1,8 @@
 package com.okex.open.api.service.publicData.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.Instrument;
+import com.okex.open.api.bean.pub.PositionTier;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.OkexResponse;
@@ -87,14 +87,14 @@ public class PublicDataAPIServiceImpl implements PublicDataAPIService {
 
     //获取标记价格 Get Mark Price
     @Override
-    public JSONObject getMarkPrice(String instType, String uly,String instFamily, String instId) {
+    public JSONObject getMarkPrice(String instType, String uly, String instFamily, String instId) {
         return this.client.executeSync(this.api.getMarkPrice(instType,uly,instFamily,instId));
     }
 
     //获取合约衍生品仓位档位  Get Position Tiers
     @Override
-    public JSONObject getTier(String instType, String uly,String instFamily, String instId, String tdMode, String tier) {
-        return this.client.executeSync(this.api.getTier(instType, uly,instFamily, instId, tdMode, tier));
+    public OkexResponse<List<PositionTier>> getTier(String instType, String uly, String instFamily, String instId, String tdMode, String tier, String ccy) {
+        return this.client.executeSync(this.api.getTier(instType, uly,instFamily, instId, tdMode, tier, ccy));
     }
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota

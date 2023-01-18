@@ -3,8 +3,10 @@ package com.okex.open.api.test.marketData;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonObject;
+import com.okex.open.api.bean.market.Ticker;
 import com.okex.open.api.bean.market.result.BinanceCandlestick;
 import com.okex.open.api.enums.BinanceInternal;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.marketData.MarketDataAPIService;
 import com.okex.open.api.service.marketData.impl.MarketDataAPIServiceImpl;
 import org.junit.Before;
@@ -42,7 +44,7 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTicker() {
-        JSONObject result = this.marketDataAPIService.getTicker("BTC-USDT-SWAP");
+        OkexResponse<List<Ticker>> result = this.marketDataAPIService.getTicker("BTC-USDT-SWAP");
         this.toResultString(MarketDataAPITest.LOG, "result", result);
     }
 

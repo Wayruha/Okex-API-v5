@@ -1,10 +1,12 @@
 package com.okex.open.api.service.marketData.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.market.Ticker;
 import com.okex.open.api.bean.market.result.BinanceCandlestick;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.enums.BinanceInternal;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.marketData.MarketDataAPIService;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
 
     //获取单个产品行情信息 Get Ticker
     @Override
-    public JSONObject getTicker(String instId) {
+    public OkexResponse<List<Ticker>> getTicker(String instId) {
         return this.client.executeSync(this.marketDataAPI.getTicker(instId));
     }
 

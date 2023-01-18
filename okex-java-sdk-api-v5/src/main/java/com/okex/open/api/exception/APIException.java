@@ -1,7 +1,10 @@
 package com.okex.open.api.exception;
 
+import lombok.Getter;
+
 public class APIException extends RuntimeException {
 
+    @Getter
     private int code;
 
     public APIException(String message) {

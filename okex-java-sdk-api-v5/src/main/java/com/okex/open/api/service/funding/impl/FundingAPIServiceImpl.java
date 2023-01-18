@@ -2,10 +2,14 @@ package com.okex.open.api.service.funding.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.funding.Currency;
 import com.okex.open.api.bean.funding.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.funding.FundingAPIService;
+
+import java.util.List;
 
 public class FundingAPIServiceImpl implements FundingAPIService {
 
@@ -19,7 +23,7 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取币种列表 Get Currencies
     @Override
-    public JSONObject getCurrencies() {
+    public OkexResponse<List<Currency>> getCurrencies() {
         return this.client.executeSync(this.api.getCurrencies());
     }
 

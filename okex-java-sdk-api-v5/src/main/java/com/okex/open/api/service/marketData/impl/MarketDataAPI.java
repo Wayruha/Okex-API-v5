@@ -1,8 +1,10 @@
 package com.okex.open.api.service.marketData.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.market.Ticker;
 import com.okex.open.api.bean.market.result.BinanceCandlestick;
 import com.okex.open.api.enums.BinanceInternal;
+import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -10,7 +12,7 @@ import retrofit2.http.Query;
 
 import java.util.List;
 
-interface MarketDataAPI {
+public interface MarketDataAPI {
 
     //获取所有产品行情信息 Get Tickers
     @GET("/api/v5/market/tickers")
@@ -18,7 +20,7 @@ interface MarketDataAPI {
 
     //获取单个产品行情信息 Get Ticker
     @GET("/api/v5/market/ticker")
-    Call<JSONObject> getTicker(@Query("instId")String instId);
+    Call<OkexResponse<List<Ticker>>> getTicker(@Query("instId")String instId);
 
     //获取指数行情数据 Get Index Tickers
     @GET("/api/v5/market/index-tickers")

@@ -1,7 +1,9 @@
 package com.okex.open.api.test.funding;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.funding.Currency;
 import com.okex.open.api.bean.funding.param.*;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.funding.FundingAPIService;
 import com.okex.open.api.service.funding.impl.FundingAPIServiceImpl;
 import org.junit.Before;
@@ -10,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FundingAPITests extends FundingAPIBaseTests {
 
@@ -31,7 +34,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getCurrencies() {
-        JSONObject result = fundingAPIService.getCurrencies();
+        OkexResponse<List<Currency>> result = fundingAPIService.getCurrencies();
         toResultString(LOG, "result", result);
     }
 

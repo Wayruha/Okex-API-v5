@@ -2,6 +2,7 @@ package com.okex.open.api.service.publicData.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.Instrument;
+import com.okex.open.api.bean.pub.PositionTier;
 import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -13,7 +14,7 @@ public interface PublicDataAPI {
 
     //获取交易产品基础信息 Get Instruments
     @GET("/api/v5/public/instruments")
-    Call<OkexResponse<List<Instrument>>> getInstruments(@Query("instType") String instType, @Query("uly") String uly, @Query("instFamily") String instFamily, @Query("instId") String instId);
+    Call<OkexResponse<List<Instrument>>> getInstruments(@Query("instType") String instType, @Query("uly")String uly, @Query("instFamily")String instFamily, @Query("instId")String instId);
 
 
     //获取交割和行权记录 Get Delivery/Exercise History
@@ -74,12 +75,13 @@ public interface PublicDataAPI {
 
     //获取合约衍生品仓位档位  Get Position Tiers
     @GET("/api/v5/public/position-tiers")
-    Call<JSONObject> getTier(@Query("instType") String instType,
-                             @Query("uly") String uly,
-                             @Query("instFamily") String instFamily,
-                             @Query("instId") String instId,
-                             @Query("tdMode") String tdMode,
-                             @Query("tier") String tier);
+    Call<OkexResponse<List<PositionTier>>> getTier(@Query("instType") String instType,
+                                                   @Query("uly")String uly,
+                                                   @Query("instFamily")String instFamily,
+                                                   @Query("instId")String instId,
+                                                   @Query("tdMode")String tdMode,
+                                                   @Query("tier")String tier,
+                                                   @Query("ccy")String ccy);
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
     @GET("/api/v5/public/interest-rate-loan-quota")
