@@ -4,7 +4,7 @@ import com.okex.open.api.constant.APIConstants;
 import com.okex.open.api.enums.I18nEnum;
 
 public class APIConfiguration {
-
+    public static final String DEFAULT_ENDPOINT = "https://www.okx.com/";
     /**
      * The user's api key provided by OKEx.
      */
@@ -21,10 +21,6 @@ public class APIConfiguration {
      * Rest api endpoint url.
      */
     private String endpoint;
-
-
-
-
 
     /**
      * Host connection timeout.
@@ -54,11 +50,10 @@ public class APIConfiguration {
     private I18nEnum i18n;
 
     public APIConfiguration() {
-        this(null);
+        this(DEFAULT_ENDPOINT);
     }
 
     public APIConfiguration(String endpoint) {
-        super();
         this.apiKey = null;
         this.secretKey = null;
         this.passphrase = null;

@@ -3,6 +3,7 @@ package com.okex.open.api.test.publicData;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.Instrument;
+import com.okex.open.api.bean.pub.LoanInfo;
 import com.okex.open.api.bean.pub.PositionTier;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.publicData.PublicDataAPIService;
@@ -173,7 +174,7 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getInterestRateLoanQuota() {
-        JSONObject result = publicDataAPIService.getInterestRateLoanQuota();
+        OkexResponse<List<LoanInfo>> result = publicDataAPIService.getInterestRateLoanQuota();
         toResultString(LOG, "result", result);
     }
 

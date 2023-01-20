@@ -1,35 +1,49 @@
 package com.okex.open.api.bean.funding;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Currency {
-    private Boolean canDep;
+    @JsonProperty("canDep")
+    private Boolean canDeposit;
     private Boolean canInternal;
-    private Boolean canWd;
-    private String ccy;
+    @JsonProperty("canWd")
+    private Boolean canWithdraw;
+    @JsonProperty("ccy")
+    private String currency;
     private String chain;
-    private String depQuotaFixed;
-    private String depQuoteDailyLayer2;
+    @JsonProperty("depQuotaFixed")
+    private String depositQuotaFixed;
+    @JsonProperty("depQuoteDailyLayer2")
+    private String depositQuoteDailyLayer2;
     private String logoLink;
     private Boolean mainNet;
-    private String maxFee;
-    private String maxWd;
-    private String minDep;
+    private BigDecimal maxFee;
+    private BigDecimal maxWd;
+    private BigDecimal minDep;
     private String minDepArrivalConfirm;
-    private String minFee;
-    private String minWd;
-    private String minWdUnlockConfirm;
+    private BigDecimal minFee;
+    @JsonProperty("minWd")
+    private BigDecimal minWithdraw;
+    @JsonProperty("minWdUnlockConfirm")
+    private String minWithdrawUnlockConfirm;
     private String name;
     private Boolean needTag;
-    private String usedDepQuotaFixed;
-    private String usedWdQuota;
-    private String wdQuota;
-    private String wdTickSz;
+    @JsonProperty("usedDepQuotaFixed")
+    private String usedDepositQuotaFixed;
+    @JsonProperty("usedWdQuota")
+    private String usedWithdrawQuota;
+    @JsonProperty("wdQuota")
+    private BigDecimal withdrawQuota;
+    @JsonProperty("wdTickSz")
+    private BigDecimal withdrawTickSize;
 }

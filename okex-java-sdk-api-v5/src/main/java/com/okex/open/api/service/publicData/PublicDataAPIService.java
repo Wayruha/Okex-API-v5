@@ -2,6 +2,7 @@ package com.okex.open.api.service.publicData;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.Instrument;
+import com.okex.open.api.bean.pub.LoanInfo;
 import com.okex.open.api.bean.pub.PositionTier;
 import com.okex.open.api.service.OkexResponse;
 
@@ -49,7 +50,7 @@ public interface PublicDataAPIService {
     OkexResponse<List<PositionTier>> getTier(String instType, String uly, String instFamily, String instId, String tdMode, String tier, String ccy);
 
     //获取杠杆利率和借币限额  Get Interest Rate and Loan Quota
-    JSONObject getInterestRateLoanQuota();
+    OkexResponse<List<LoanInfo>> getInterestRateLoanQuota();
 
     //获取衍生品标的指数   Get Underlying
     JSONObject getUnderlying(String instType);
