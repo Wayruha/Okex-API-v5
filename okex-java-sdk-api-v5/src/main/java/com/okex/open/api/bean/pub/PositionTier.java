@@ -1,7 +1,6 @@
 package com.okex.open.api.bean.pub;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,24 +10,23 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class PositionTier {
     private String baseMaxLoan;
-    @JsonProperty("imr")
+    @SerializedName("imr")
     private String initialMarginRequirementRate;
     private String instId;
     private String maxLever;
-    @JsonProperty("maxSz")
+    @SerializedName("maxSz")
     private BigDecimal maxSize;
-    @JsonProperty("minSz")
+    @SerializedName("minSz")
     private BigDecimal minSize;
-    @JsonProperty("mmr")
+    @SerializedName("mmr")
     private String maintenanceMarginRequirementRate;
-    @JsonProperty("optMgnFactor")
+    @SerializedName("optMgnFactor")
     private String optionMarginCoefficient;
     private String quoteMaxLoan;
     private String tier;
-    @JsonProperty("uly")
+    @SerializedName("uly")
     private String underlying;
     private String instFamily;
 }

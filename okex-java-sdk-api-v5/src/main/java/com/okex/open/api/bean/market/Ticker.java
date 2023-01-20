@@ -1,6 +1,6 @@
 package com.okex.open.api.bean.market;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,32 +13,32 @@ import java.math.BigDecimal;
 public class Ticker {
     private String instType;
     private String instId;
-    @JsonProperty("last")
+    @SerializedName("last")
     private BigDecimal lastTradedPrice;
-    @JsonProperty("lastSz")
+    @SerializedName("lastSz")
     private BigDecimal lastTradedSize;
-    @JsonProperty("askPx")
+    @SerializedName("askPx")
     private BigDecimal bestAskPrice;
-    @JsonProperty("askSz")
+    @SerializedName("askSz")
     private BigDecimal bestAskSize;
-    @JsonProperty("bidPx")
+    @SerializedName("bidPx")
     private BigDecimal bestBidPrice;
-    @JsonProperty("bidSz")
+    @SerializedName("bidSz")
     private BigDecimal bestBidSize;
-    @JsonProperty("open24h")
+    @SerializedName("open24h")
     private BigDecimal openPrise24h;
-    @JsonProperty("high24h")
+    @SerializedName("high24h")
     private BigDecimal highestPrice24h;
-    @JsonProperty("low24h")
+    @SerializedName("low24h")
     private BigDecimal lowestPrice24h;
-    @JsonProperty("volCcy24h")
+    @SerializedName("volCcy24h")
     private BigDecimal tradingVolumeCcy24h;
-    @JsonProperty("vol24h")
+    @SerializedName("vol24h")
     private BigDecimal tradingVolume24h;
-    @JsonProperty("sodUtc0")
+    @SerializedName("sodUtc0")
     private BigDecimal openPriceUtc0;
-    @JsonProperty("sodUtc8")
+    @SerializedName("sodUtc8")
     private BigDecimal openPriceUtc8;
-    @JsonProperty("ts")
+    @SerializedName("ts")
     private long timestamp;
 }

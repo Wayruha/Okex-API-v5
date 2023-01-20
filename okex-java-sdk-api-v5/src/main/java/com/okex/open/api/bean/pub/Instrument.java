@@ -1,7 +1,6 @@
 package com.okex.open.api.bean.pub;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,55 +10,54 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Instrument {
     private InstrumentType instType;
     private String instId;
     private String instFamily;
-    @JsonProperty("uly")
+    @SerializedName("uly")
     private String underlying;
     private String category;
-    @JsonProperty("baseCcy")
+    @SerializedName("baseCcy")
     private String baseCurrency;
-    @JsonProperty("quoteCcy")
+    @SerializedName("quoteCcy")
     private String quoteCurrency;
-    @JsonProperty("settleCcy")
+    @SerializedName("settleCcy")
     private String settleCurrency;
-    @JsonProperty("ctVal")
+    @SerializedName("ctVal")
     private String contractValue;
-    @JsonProperty("ctMult")
+    @SerializedName("ctMult")
     private String contractMultiplier;
-    @JsonProperty("ctValCcy")
+    @SerializedName("ctValCcy")
     private String contractValurCurrency;
-    @JsonProperty("optType")
+    @SerializedName("optType")
     private String optionType;
-    @JsonProperty("stk")
+    @SerializedName("stk")
     private String strikePrice;
-    @JsonProperty("listTime")
+    @SerializedName("listTime")
     private String listingTime;
-    @JsonProperty("expTime")
+    @SerializedName("expTime")
     private String expiryTime;
     private String lever;
-    @JsonProperty("tickSz")
+    @SerializedName("tickSz")
     private BigDecimal tickSize;
-    @JsonProperty("lotSz")
+    @SerializedName("lotSz")
     private BigDecimal lotSize;
-    @JsonProperty("minSz")
+    @SerializedName("minSz")
     private BigDecimal minSize;
-    @JsonProperty("ctType")
+    @SerializedName("ctType")
     private String contractType;
     private String alias;
     private String state;
-    @JsonProperty("maxLmtSz")
+    @SerializedName("maxLmtSz")
     private BigDecimal maxLimitSize;
-    @JsonProperty("maxMktSz")
+    @SerializedName("maxMktSz")
     private BigDecimal maxMarketSize;
-    @JsonProperty("maxTwapSz")
+    @SerializedName("maxTwapSz")
     private BigDecimal maxTwapSize;
-    @JsonProperty("maxIcebergSz")
+    @SerializedName("maxIcebergSz")
     private BigDecimal maxIcebergSize;
-    @JsonProperty("maxTriggerSz")
+    @SerializedName("maxTriggerSz")
     private BigDecimal maxTriggerSize;
-    @JsonProperty("maxStopSz")
+    @SerializedName("maxStopSz")
     private BigDecimal maxStopSize;
 }
