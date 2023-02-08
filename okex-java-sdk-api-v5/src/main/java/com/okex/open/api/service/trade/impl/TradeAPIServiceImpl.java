@@ -2,9 +2,11 @@ package com.okex.open.api.service.trade.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.trade.TradeAPIService;
 
 import java.util.List;
@@ -153,7 +155,7 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //一键还债交易 Trade one-click repay
     @Override
-    public JSONObject oneClickRepay(OneClickRepay oneClickRepay) {
+    public OkexResponse<List<OneClickRepayResult>> oneClickRepay(OneClickRepay oneClickRepay) {
         return this.client.executeSync(this.tradeAPI.oneClickRepay(oneClickRepay));
     }
 

@@ -1,7 +1,9 @@
 package com.okex.open.api.service.trade.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
+import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -168,7 +170,7 @@ interface TradeAPI {
 
     //一键还债交易 Trade one-click repay
     @POST("/api/v5/trade/one-click-repay")
-    Call<JSONObject> oneClickRepay(@Body OneClickRepay oneClickRepay );
+    Call<OkexResponse<List<OneClickRepayResult>>> oneClickRepay(@Body OneClickRepay oneClickRepay );
 
     //获取一键还债历史记录 Get one-click repay history
     @GET("/api/v5/trade/one-click-repay-history")

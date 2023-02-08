@@ -3,10 +3,14 @@ package com.okex.open.api.service.account.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.account.param.*;
+import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.account.AccountAPIService;
 import retrofit2.http.Query;
+
+import java.util.List;
 
 public class AccountAPIServiceImpl implements AccountAPIService {
 
@@ -147,7 +151,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //一键借币模式手动借币还币 Manual borrow and repay in Quick Margin Mode
     @Override
-    public JSONObject quickMarginBorrowRepay(QuickMarginBorrowRepay quickMarginBorrowRepay) {
+    public OkexResponse<List<QuickMarginRepayResult>> quickMarginBorrowRepay(QuickMarginBorrowRepay quickMarginBorrowRepay) {
         return this.client.executeSync(this.api.quickMarginBorrowRepay(JSONObject.parseObject(JSON.toJSONString(quickMarginBorrowRepay))));
     }
 

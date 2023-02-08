@@ -1,5 +1,8 @@
 package com.okex.open.api.bean.account.param;
 
+import lombok.Data;
+
+@Data
 public class QuickMarginBorrowRepay {
     private String instId;
     private String ccy;

@@ -1,7 +1,9 @@
 package com.okex.open.api.test.trade;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.trade.TradeAPIService;
 import com.okex.open.api.service.trade.impl.TradeAPIServiceImpl;
 import org.junit.Before;
@@ -489,7 +491,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         oneClickRepay.setDebtCcy(debtCcy);
         oneClickRepay.setRepayCcy("XRP");
 
-        JSONObject result = tradeAPIService.oneClickRepay(oneClickRepay);
+        OkexResponse<List<OneClickRepayResult>> result = tradeAPIService.oneClickRepay(oneClickRepay);
         toResultString(LOG, "result", result);
     }
 

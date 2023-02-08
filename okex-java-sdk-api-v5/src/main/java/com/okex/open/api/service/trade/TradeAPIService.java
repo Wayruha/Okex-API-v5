@@ -1,8 +1,9 @@
 package com.okex.open.api.service.trade;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
-import retrofit2.http.Query;
+import com.okex.open.api.service.OkexResponse;
 
 import java.util.List;
 
@@ -75,7 +76,7 @@ public interface TradeAPIService {
     JSONObject getOneClickRepayCurrencyList(String debtType);
 
     //一键还债交易 Trade one-click repay
-    JSONObject oneClickRepay(OneClickRepay oneClickRepay);
+    OkexResponse<List<OneClickRepayResult>> oneClickRepay(OneClickRepay oneClickRepay);
 
     //获取一键还债历史记录 Get one-click repay history
     JSONObject getOneClickRepayHistory(String after,String before,String limit);

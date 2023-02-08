@@ -2,6 +2,8 @@ package com.okex.open.api.test.account;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.account.param.*;
+import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
+import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.account.AccountAPIService;
 import com.okex.open.api.service.account.impl.AccountAPIServiceImpl;
 import org.junit.Before;
@@ -270,7 +272,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         quickMarginBorrowRepay.setSide("repay");
         quickMarginBorrowRepay.setAmt("0.1");
         quickMarginBorrowRepay.setInstId("");
-        JSONObject result = this.accountAPIService.quickMarginBorrowRepay(quickMarginBorrowRepay);
+        OkexResponse<List<QuickMarginRepayResult>> result = this.accountAPIService.quickMarginBorrowRepay(quickMarginBorrowRepay);
         toResultString(LOG, "result", result);
     }
 
