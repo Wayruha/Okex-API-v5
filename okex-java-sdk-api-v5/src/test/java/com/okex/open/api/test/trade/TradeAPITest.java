@@ -1,8 +1,10 @@
 package com.okex.open.api.test.trade;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
+import com.okex.open.api.bean.trade.result.OrderHistoryResult;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.trade.TradeAPIService;
 import com.okex.open.api.service.trade.impl.TradeAPIServiceImpl;
@@ -267,7 +269,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderList(){
-        JSONObject result = tradeAPIService.getOrderList("FUTURES","","EOS-USDT-211231","","","","","","");
+        OkexResponse<List<OrderHistoryResult>> result = tradeAPIService.getOrderList(InstrumentType.FUTURS,"","EOS-USDT-211231",null,"",null,"","","");
         toResultString(LOG, "result", result);
     }
 
@@ -278,7 +280,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory7days(){
-        JSONObject result = tradeAPIService.getOrderHistory7days("FUTURES","","","","","","","","","","","");
+        OkexResponse<List<OrderHistoryResult>> result = tradeAPIService.getOrderHistory7days(InstrumentType.FUTURS,"","",null,"",null,"","","","","","");
         toResultString(LOG, "result", result);
     }
 
@@ -289,7 +291,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
      */
     @Test
     public void getOrderHistory3months(){
-        JSONObject result = tradeAPIService.getOrderHistory3months("SWAP","","BTC-USDT-SWAP","","","","","","","","","");
+        OkexResponse<List<OrderHistoryResult>> result = tradeAPIService.getOrderHistory3months(InstrumentType.SWAP,"","BTC-USDT-SWAP",null,"",null,"","","","","","");
         toResultString(LOG, "result", result);
     }
 

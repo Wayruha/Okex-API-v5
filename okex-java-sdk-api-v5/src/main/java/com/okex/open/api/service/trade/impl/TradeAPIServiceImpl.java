@@ -2,8 +2,12 @@ package com.okex.open.api.service.trade.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.pub.InstrumentType;
+import com.okex.open.api.bean.pub.OrderState;
+import com.okex.open.api.bean.pub.OrderType;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
+import com.okex.open.api.bean.trade.result.OrderHistoryResult;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.OkexResponse;
@@ -71,19 +75,19 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //获取未成交订单列表 Get Order List
     @Override
-    public JSONObject getOrderList(String instType,String uly,String instId,String ordType,String instFamily,String state,String after,String before,String limit) {
+    public OkexResponse<List<OrderHistoryResult>> getOrderList(InstrumentType instType, String uly, String instId, OrderType ordType, String instFamily, OrderState state, String after, String before, String limit) {
         return this.client.executeSync(this.tradeAPI.getOrderList(instType, uly, instId, ordType,instFamily, state, after, before, limit));
     }
 
     //获取历史订单记录（近七天） Get Order History (last 7 days）
     @Override
-    public JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType, String instFamily,String state, String category,String after, String before, String limit,String begin,String end) {
+    public OkexResponse<List<OrderHistoryResult>> getOrderHistory7days(InstrumentType instType, String uly, String instId, OrderType ordType, String instFamily, OrderState state, String category, String after, String before, String limit, String begin, String end) {
         return this.client.executeSync(this.tradeAPI.getOrderHistory7days(instType, uly, instId, ordType,instFamily, state, category,after, before, limit, begin,end));
     }
 
     ////获取历史订单记录（近三个月） Get Order History (last 3 months)
     @Override
-    public JSONObject getOrderHistory3months(String instType, String uly, String instId, String ordType,String instFamily, String state, String category,String after, String before, String limit,String begin,String end) {
+    public OkexResponse<List<OrderHistoryResult>> getOrderHistory3months(InstrumentType instType, String uly, String instId, OrderType ordType,String instFamily, OrderState state, String category,String after, String before, String limit,String begin,String end) {
         return this.client.executeSync(this.tradeAPI.getOrderHistory3months(instType, uly, instId, ordType,instFamily, state, category,after, before, limit,begin,end));
     }
 

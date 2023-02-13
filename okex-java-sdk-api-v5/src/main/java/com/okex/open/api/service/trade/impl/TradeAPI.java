@@ -1,8 +1,12 @@
 package com.okex.open.api.service.trade.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.pub.InstrumentType;
+import com.okex.open.api.bean.pub.OrderState;
+import com.okex.open.api.bean.pub.OrderType;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
+import com.okex.open.api.bean.trade.result.OrderHistoryResult;
 import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -48,39 +52,39 @@ interface TradeAPI {
 
     //获取未成交订单列表 Get Order List
     @GET("/api/v5/trade/orders-pending")
-    Call<JSONObject> getOrderList(@Query("instType") String instType,
+    Call<OkexResponse<List<OrderHistoryResult>>> getOrderList(@Query("instType") InstrumentType instType,
                                   @Query("uly")String uly,
                                   @Query("instId")String instId,
-                                  @Query("ordType")String ordType,
+                                  @Query("ordType") OrderType ordType,
                                   @Query("instFamily")String instFamily,
-                                  @Query("state")String state,
+                                  @Query("state") OrderState state,
                                   @Query("after")String after,
                                   @Query("before")String before,
                                   @Query("limit")String limit);
 
     //获取历史订单记录（近七天） Get Order History (last 7 days）
     @GET("/api/v5/trade/orders-history")
-    Call<JSONObject> getOrderHistory7days(@Query("instType") String instType,
-                                          @Query("uly")String uly,
-                                          @Query("instId")String instId,
-                                          @Query("ordType")String ordType,
-                                          @Query("instFamily")String instFamily,
-                                          @Query("state")String state,
-                                          @Query("category")String category,
-                                          @Query("after")String after,
-                                          @Query("before")String before,
-                                          @Query("limit")String limit,
-                                          @Query("begin")String begin,
-                                          @Query("end")String end);
+    Call<OkexResponse<List<OrderHistoryResult>>> getOrderHistory7days(@Query("instType") InstrumentType instType,
+                                                                      @Query("uly")String uly,
+                                                                      @Query("instId")String instId,
+                                                                      @Query("ordType")OrderType ordType,
+                                                                      @Query("instFamily")String instFamily,
+                                                                      @Query("state")OrderState state,
+                                                                      @Query("category")String category,
+                                                                      @Query("after")String after,
+                                                                      @Query("before")String before,
+                                                                      @Query("limit")String limit,
+                                                                      @Query("begin")String begin,
+                                                                      @Query("end")String end);
 
     //获取历史订单记录（近三个月） Get Order History (last 3 months)
     @GET("/api/v5/trade/orders-history-archive")
-    Call<JSONObject> getOrderHistory3months(@Query("instType") String instType,
+    Call<OkexResponse<List<OrderHistoryResult>>> getOrderHistory3months(@Query("instType") InstrumentType instType,
                                             @Query("uly")String uly,
                                             @Query("instId")String instId,
-                                            @Query("ordType")String ordType,
+                                            @Query("ordType")OrderType ordType,
                                             @Query("instFamily")String instFamily,
-                                            @Query("state")String state,
+                                            @Query("state")OrderState state,
                                             @Query("category")String category,
                                             @Query("after")String after,
                                             @Query("before")String before,

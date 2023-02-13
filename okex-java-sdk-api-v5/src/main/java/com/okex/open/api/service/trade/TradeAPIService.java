@@ -1,8 +1,12 @@
 package com.okex.open.api.service.trade;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.pub.InstrumentType;
+import com.okex.open.api.bean.pub.OrderState;
+import com.okex.open.api.bean.pub.OrderType;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
+import com.okex.open.api.bean.trade.result.OrderHistoryResult;
 import com.okex.open.api.service.OkexResponse;
 
 import java.util.List;
@@ -34,13 +38,13 @@ public interface TradeAPIService {
     JSONObject getOrderDetails(String instId,String ordId,String clOrdId);
 
     //获取未成交订单列表 Get Order List
-    JSONObject getOrderList(String instType,String uly,String instId,String ordType,String instFamily,String state,String after,String before,String limit);
+    OkexResponse<List<OrderHistoryResult>> getOrderList(InstrumentType instType, String uly, String instId, OrderType ordType, String instFamily, OrderState state, String after, String before, String limit);
 
     //获取历史订单记录（近七天） Get Order History (last 7 days）
-    JSONObject getOrderHistory7days(String instType, String uly, String instId, String ordType,String instFamily, String state, String category, String after, String before, String limit,String begin,String end);
+    OkexResponse<List<OrderHistoryResult>> getOrderHistory7days(InstrumentType instType, String uly, String instId, OrderType ordType, String instFamily, OrderState state, String category, String after, String before, String limit, String begin, String end);
 
     //获取历史订单记录（近三个月） Get Order History (last 3 months)
-    JSONObject getOrderHistory3months(String instType,String uly,String instId,String ordType,String instFamily,String state, String category,String after,String before,String limit,String begin,String end);
+    OkexResponse<List<OrderHistoryResult>> getOrderHistory3months(InstrumentType instType,String uly,String instId,OrderType ordType,String instFamily,OrderState state, String category,String after,String before,String limit,String begin,String end);
 
     //获取成交明细（近三天） Get Transaction Details(last 3 days）
     JSONObject getTransactionDetails(String instType,String uly,String instId,String ordId,String instFamily,String after,String before,String begin,String end,String limit);
