@@ -15,7 +15,8 @@ public class OrderHistoryResult {
     @SerializedName("ccy")
     private String currency;
     private String ordId;
-    private String clOrdId;
+    @SerializedName("clOrdId")
+    private String clientOrderId;
     private String tag;
     @SerializedName("px")
     private String price;
@@ -24,27 +25,41 @@ public class OrderHistoryResult {
     private OrderType ordType;
     private OrderSide side;
     private String posSide;
-    private TradeMode tdMode;
-    private String accFillSz;
-    private String fillPx;
+    @SerializedName("tdMode")
+    private TradeMode tradeMode;
+    @SerializedName("accFillSz")
+    private String actualFillSize;
+    @SerializedName("fillPx")
+    private String lastFilledPrice;
     private String tradeId;
-    private String fillSz;
+    @SerializedName("fillSz")
+    private String fillSize;
     private String fillTime;
     private OrderState state;
-    private String avgPx;
-    private String lever;
-    private String tpTriggerPx;
-    private String tpTriggerPxType;
-    private String tpOrdPx;
-    private String slTriggerPx;
-    private String slTriggerPxType;
-    private String slOrdPx;
-    private String feeCcy;
+    @SerializedName("avgPx")
+    private String averageFillPrice;
+    @SerializedName("lever")
+    private String leverage;
+    @SerializedName("tpTriggerPx")
+    private String tpTriggerPrice;
+    @SerializedName("tpTriggerPxType")
+    private String tpTriggerPriceType;
+    @SerializedName("tpOrdPx")
+    private String tpOrderPrice;
+    @SerializedName("slTriggerPx")
+    private String slTriggerPrice;
+    @SerializedName("tpTriggerPxType")
+    private String slTriggerPriceType;
+    @SerializedName("slOrdPx")
+    private String slOrderPrice;
+    @SerializedName("feeCcy")
+    private String feeCurrency;
     private String fee;
     private String rebateCcy;
     private String source;
     private String rebate;
-    private String tgtCcy;
+    @SerializedName("tgtCcy")
+    private String targetCurrency;
     private String pnl;
     private String category;
     private boolean reduceOnly;
