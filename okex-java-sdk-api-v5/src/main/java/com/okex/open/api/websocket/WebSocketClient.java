@@ -40,8 +40,7 @@ public class WebSocketClient<T> implements WebSocket {
     private Channel ch;
     protected WebSocketListener<T> listener;
     private String URL;
-    private Timer timer = new HashedWheelTimer(Executors.defaultThreadFactory());
-
+    private HashedWheelTimer timer;
     private ObjectMapper mapper;
 
     public WebSocketClient(WebSocketAccess webSocketAccess, WebSocketListener<T> listener, ObjectMapper mapper) {
@@ -52,6 +51,7 @@ public class WebSocketClient<T> implements WebSocket {
 
     private void init() {
         try {
+            this.timer = new HashedWheelTimer(Executors.defaultThreadFactory());
             URI uri  = new URI(URL);
             String scheme = uri.getScheme() == null? "ws" : uri.getScheme();
             final String host = uri.getHost() == null? "127.0.0.1" : uri.getHost();
@@ -107,6 +107,9 @@ public class WebSocketClient<T> implements WebSocket {
     @Override
     public void close() {
         ch.close();
+        if(this.timer != null) {
+            this.timer.stop();
+        }
     }
 
     @Override
