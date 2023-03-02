@@ -1,7 +1,7 @@
 package com.okex.open.api.test.funding;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.funding.Currency;
+import com.okex.open.api.bean.funding.*;
 import com.okex.open.api.bean.funding.param.*;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.funding.FundingAPIService;
@@ -44,7 +44,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getBalance() {
-        JSONObject result = fundingAPIService.getBalance("USDT");
+        OkexResponse<List<FundingBalance>> result = fundingAPIService.getBalance("USDT");
         toResultString(LOG, "result", result);
     }
 
@@ -69,13 +69,13 @@ public class FundingAPITests extends FundingAPIBaseTests {
         fundsTransfer.setCcy("USDT");
         fundsTransfer.setAmt("1");
 //        fundsTransfer.setType("0");
-        fundsTransfer.setFrom("18");
-        fundsTransfer.setTo("6");
+        fundsTransfer.setFrom(Direction.TRADING_ACC);
+        fundsTransfer.setTo(Direction.FUNDING_ACC);
 //        fundsTransfer.setSubAcct("");
         fundsTransfer.setClientId("");
         fundsTransfer.setLoanTrans(false);
         fundsTransfer.setOmitPosRisk("false");
-        JSONObject result = fundingAPIService.fundsTransfer(fundsTransfer);
+        OkexResponse<List<TransferResult>> result = fundingAPIService.fundsTransfer(fundsTransfer);
         toResultString(LOG, "result", result);
     }
 
@@ -105,7 +105,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getDepositAddress() {
-        JSONObject result = fundingAPIService.getDepositAddress("EOS");
+        OkexResponse<List<DepositAddress>> result = fundingAPIService.getDepositAddress("EOS");
         toResultString(LOG, "result", result);
     }
 

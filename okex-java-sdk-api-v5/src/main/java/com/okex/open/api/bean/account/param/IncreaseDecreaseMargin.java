@@ -1,9 +1,12 @@
 package com.okex.open.api.bean.account.param;
 
+import com.okex.open.api.bean.account.AdjustType;
+import com.okex.open.api.bean.account.PositionSide;
+
 public class IncreaseDecreaseMargin {
     private String instId;
-    private String posSide;
-    private String type;
+    private PositionSide posSide;
+    private AdjustType type;
     private String amt;
     private Boolean loanTrans;
     private String ccy;
@@ -54,19 +57,19 @@ public class IncreaseDecreaseMargin {
         this.instId = instId;
     }
 
-    public String getPosSide() {
+    public PositionSide getPosSide() {
         return posSide;
     }
 
-    public void setPosSide(String posSide) {
+    public void setPosSide(PositionSide posSide) {
         this.posSide = posSide;
     }
 
-    public String getType() {
+    public AdjustType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(AdjustType type) {
         this.type = type;
     }
 

@@ -1,11 +1,13 @@
 package com.okex.open.api.bean.funding.param;
 
+import com.okex.open.api.bean.funding.Direction;
+
 public class FundsTransfer {
     private String ccy;
     private String amt;
     private String type;
-    private String from;
-    private String to;
+    private Direction from;
+    private Direction to;
     private String subAcct;
     private String clientId;
     private Boolean loanTrans;
@@ -60,19 +62,19 @@ public class FundsTransfer {
         this.type = type;
     }
 
-    public String getFrom() {
+    public Direction getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(Direction from) {
         this.from = from;
     }
 
-    public String getTo() {
+    public Direction getTo() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(Direction to) {
         this.to = to;
     }
 

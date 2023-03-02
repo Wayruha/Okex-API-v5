@@ -2,6 +2,9 @@ package com.okex.open.api.service.funding;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.Currency;
+import com.okex.open.api.bean.funding.DepositAddress;
+import com.okex.open.api.bean.funding.FundingBalance;
+import com.okex.open.api.bean.funding.TransferResult;
 import com.okex.open.api.bean.funding.param.*;
 import com.okex.open.api.service.OkexResponse;
 
@@ -13,16 +16,16 @@ public interface FundingAPIService {
     OkexResponse<List<Currency>> getCurrencies();
 
     //获取资金账户余额
-    JSONObject getBalance(String ccy);
+    OkexResponse<List<FundingBalance>> getBalance(String ccy);
 
     //资金划转  Funds Transfer
-    JSONObject fundsTransfer(FundsTransfer fundsTransfer);
+    OkexResponse<List<TransferResult>> fundsTransfer(FundsTransfer fundsTransfer);
 
     //资金流水查询 Asset Bills Details
     JSONObject assetBillsDetails(String ccy,String type,String clientId,String after,String before,String limit);
 
     //获取充值地址信息 Get Deposit Address
-    JSONObject getDepositAddress(String ccy);
+    OkexResponse<List<DepositAddress>> getDepositAddress(String ccy);
 
     //获取充值记录 Get Deposit History
     JSONObject getDepositHistory(String ccy,String txId,String type,String state,String after,String before,String limit,String depId);

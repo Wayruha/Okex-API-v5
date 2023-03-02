@@ -1,12 +1,13 @@
 package com.okex.open.api.service.account;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.account.result.AccountBalance;
 import com.okex.open.api.bean.account.param.*;
+import com.okex.open.api.bean.account.result.AdjustPositionResult;
+import com.okex.open.api.bean.account.result.Position;
 import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
+import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.service.OkexResponse;
-import retrofit2.Call;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -14,10 +15,10 @@ import java.util.List;
 public interface AccountAPIService {
 
     //查看账户余额 Get Balance
-    JSONObject getBalance(String ccy);
+    OkexResponse<List<AccountBalance>> getBalance(String ccy);
 
     //查看持仓信息 Get Positions
-    JSONObject getPositions(String instType,String instId,String posId);
+    OkexResponse<List<Position>> getPositions(InstrumentType instType, String instId, String posId);
 
     //查看历史持仓信息   Get positions-history
     JSONObject getPositionsHistory(String instType, String instId, String mgnMode, String type, String after, String before, String limit,String posId);
@@ -47,7 +48,7 @@ public interface AccountAPIService {
     JSONObject getMaximumAvailableTradableAmount(String instId,String tdMode,String ccy,Boolean reduceOnly,String px,Boolean unSpotOffset,String quickMgnType);
 
     //调整保证金 Increase/Decrease margin
-     JSONObject increaseDecreaseMargin(IncreaseDecreaseMargin increaseDecreaseMargin);
+    OkexResponse<List<AdjustPositionResult>> increaseDecreaseMargin(IncreaseDecreaseMargin increaseDecreaseMargin);
 
     //获取杠杆倍数 Get Leverage
     JSONObject getLeverage(String instId,String mgnMode);

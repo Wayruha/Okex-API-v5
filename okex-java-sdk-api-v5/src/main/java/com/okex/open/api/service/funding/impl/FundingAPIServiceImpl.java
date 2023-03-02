@@ -3,6 +3,9 @@ package com.okex.open.api.service.funding.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.Currency;
+import com.okex.open.api.bean.funding.DepositAddress;
+import com.okex.open.api.bean.funding.FundingBalance;
+import com.okex.open.api.bean.funding.TransferResult;
 import com.okex.open.api.bean.funding.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
@@ -29,14 +32,14 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取资金账户余额 Get Balance
     @Override
-    public JSONObject getBalance(String ccy) {
+    public OkexResponse<List<FundingBalance>> getBalance(String ccy) {
         return this.client.executeSync(this.api.getBalance(ccy));
     }
 
     //资金划转  Funds Transfer
     @Override
-    public JSONObject fundsTransfer(FundsTransfer fundsTransfer) {
-        return this.client.executeSync(this.api.fundsTransfer(JSONObject.parseObject(JSON.toJSONString(fundsTransfer))));
+    public OkexResponse<List<TransferResult>> fundsTransfer(FundsTransfer fundsTransfer) {
+        return this.client.executeSync(this.api.fundsTransfer(fundsTransfer));
     }
 
     //资金流水查询 Asset Bills Details
@@ -47,7 +50,7 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取充值地址信息 Get Deposit Address
     @Override
-    public JSONObject getDepositAddress(String ccy) {
+    public OkexResponse<List<DepositAddress>> getDepositAddress(String ccy) {
         return this.client.executeSync(this.api.getDepositAddress(ccy));
     }
 

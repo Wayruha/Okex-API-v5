@@ -1,0 +1,45 @@
+package com.okex.open.api.bean.other;
+
+import com.okex.open.api.bean.pub.InstrumentType;
+import com.okex.open.api.bean.pub.MarginMode;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PositionUpdate {
+    private String pTime;
+    private String eventType;
+    private List<BalanceData> balData;
+    private List<PositionData> posData;
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class BalanceData {
+        private String ccy;
+        private String cashBal;
+        private String uTime;
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public class PositionData {
+        private String posId;
+        private String tradeId;
+        private String instId;
+        private InstrumentType instType;
+        private MarginMode mgnMode;
+        private String posSide;
+        private String pos;
+        private String ccy;
+        private String posCcy;
+        private String avgPx;
+        private String uTIme;
+    }
+}

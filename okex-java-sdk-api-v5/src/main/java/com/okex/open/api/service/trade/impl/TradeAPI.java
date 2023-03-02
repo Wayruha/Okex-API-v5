@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.bean.pub.OrderState;
 import com.okex.open.api.bean.pub.OrderType;
+import com.okex.open.api.bean.trade.Order;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
 import com.okex.open.api.bean.trade.result.OrderHistoryResult;
@@ -20,7 +21,7 @@ interface TradeAPI {
 
     //下单 Place Order
     @POST("/api/v5/trade/order")
-    Call<JSONObject> placeOrder(@Body JSONObject jsonObject);
+    Call<OkexResponse<List<Order>>> placeOrder(@Body PlaceOrder placeOrder);
 
     //批量下单 Place Multiple Orders
     @POST("/api/v5/trade/batch-orders")

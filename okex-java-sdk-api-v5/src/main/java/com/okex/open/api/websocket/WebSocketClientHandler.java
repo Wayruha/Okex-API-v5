@@ -62,6 +62,8 @@ public class WebSocketClientHandler<T> extends SimpleChannelInboundHandler<Objec
                 webSocketClient.listener.onWebsocketPong(webSocketClient);
             } else if (txt.contains("\"data\":[{\"asks\":[") && txt.contains("],\"bids\":[")) {
                 webSocketClient.listener.onResponse(webSocketClient, parseResponse(txt, webSocketClient.listener.getType()));
+            } else if (txt.contains("\"data\":[{") && txt.contains("\"details\":[{")) {
+                webSocketClient.listener.onResponse(webSocketClient, parseResponse(txt, webSocketClient.listener.getType()));
             }
             webSocketClient.listener.onText(webSocketClient, txt);
         } else {

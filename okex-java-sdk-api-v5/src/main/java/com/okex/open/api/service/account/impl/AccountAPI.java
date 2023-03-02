@@ -1,8 +1,12 @@
 package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.account.param.AccountQuickBorrowRepay;
+import com.okex.open.api.bean.account.param.IncreaseDecreaseMargin;
+import com.okex.open.api.bean.account.result.AccountBalance;
+import com.okex.open.api.bean.account.result.AdjustPositionResult;
+import com.okex.open.api.bean.account.result.Position;
 import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
+import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -14,11 +18,11 @@ public interface AccountAPI {
 
     //查看账户余额 Get Balance
     @GET("/api/v5/account/balance")
-    Call<JSONObject> getBalance(@Query("ccy") String ccy);
+    Call<OkexResponse<List<AccountBalance>>> getBalance(@Query("ccy") String ccy);
 
     //查看持仓信息 Get Positions
     @GET("/api/v5/account/positions")
-    Call<JSONObject> getPositions(@Query("instType") String instType,@Query("instId") String instId,@Query("posId") String posId);
+    Call<OkexResponse<List<Position>>> getPositions(@Query("instType") InstrumentType instType, @Query("instId") String instId, @Query("posId") String posId);
 
     //查看历史持仓信息   Get positions-history
     @GET("/api/v5/account/positions-history")
@@ -74,7 +78,7 @@ public interface AccountAPI {
 
     //调整保证金 Increase/Decrease margin
     @POST("/api/v5/account/position/margin-balance")
-    Call<JSONObject> increaseDecreaseMargin(@Body JSONObject jsonObject);
+    Call<OkexResponse<List<AdjustPositionResult>>> increaseDecreaseMargin(@Body IncreaseDecreaseMargin request);
 
     //获取杠杆倍数 Get Leverage
     @GET("/api/v5/account/leverage-info")

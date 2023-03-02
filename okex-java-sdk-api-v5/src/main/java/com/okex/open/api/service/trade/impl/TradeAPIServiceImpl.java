@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.bean.pub.OrderState;
 import com.okex.open.api.bean.pub.OrderType;
+import com.okex.open.api.bean.trade.Order;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
 import com.okex.open.api.bean.trade.result.OrderHistoryResult;
@@ -27,8 +28,8 @@ public class TradeAPIServiceImpl implements TradeAPIService {
 
     //下单 Place Order
     @Override
-    public JSONObject placeOrder(PlaceOrder placeOrder) {
-        return this.client.executeSync(this.tradeAPI.placeOrder(JSONObject.parseObject(JSON.toJSONString(placeOrder))));
+    public OkexResponse<List<Order>> placeOrder(PlaceOrder placeOrder) {
+        return this.client.executeSync(this.tradeAPI.placeOrder(placeOrder));
     }
 
     //批量下单 Place Multiple Orders

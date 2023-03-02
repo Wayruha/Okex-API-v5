@@ -2,13 +2,16 @@ package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.account.result.AccountBalance;
 import com.okex.open.api.bean.account.param.*;
+import com.okex.open.api.bean.account.result.AdjustPositionResult;
+import com.okex.open.api.bean.account.result.Position;
 import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
+import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.account.AccountAPIService;
-import retrofit2.http.Query;
 
 import java.util.List;
 
@@ -25,13 +28,13 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //查看账户余额 Get Balance
     @Override
-    public JSONObject getBalance(String ccy) {
+    public OkexResponse<List<AccountBalance>> getBalance(String ccy) {
         return this.client.executeSync(this.api.getBalance(ccy));
     }
 
     //查看持仓信息 Get Positions
     @Override
-    public JSONObject getPositions(String instType, String instId,String posId) {
+    public OkexResponse<List<Position>> getPositions(InstrumentType instType, String instId, String posId) {
         return this.client.executeSync(this.api.getPositions(instType,instId,posId));
     }
 
@@ -91,8 +94,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //调整保证金 Increase/Decrease margin
     @Override
-    public JSONObject increaseDecreaseMargin(IncreaseDecreaseMargin increaseDecreaseMargin) {
-        return this.client.executeSync(this.api.increaseDecreaseMargin(JSONObject.parseObject(JSON.toJSONString(increaseDecreaseMargin))));
+    public OkexResponse<List<AdjustPositionResult>> increaseDecreaseMargin(IncreaseDecreaseMargin increaseDecreaseMargin) {
+        return this.client.executeSync(this.api.increaseDecreaseMargin(increaseDecreaseMargin));
     }
 
     //获取杠杆倍数 Get Leverage

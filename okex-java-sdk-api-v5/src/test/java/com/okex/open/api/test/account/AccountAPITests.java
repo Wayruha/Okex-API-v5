@@ -1,8 +1,14 @@
 package com.okex.open.api.test.account;
 
 import com.alibaba.fastjson.JSONObject;
+import com.okex.open.api.bean.account.AdjustType;
+import com.okex.open.api.bean.account.PositionSide;
+import com.okex.open.api.bean.account.result.AccountBalance;
 import com.okex.open.api.bean.account.param.*;
+import com.okex.open.api.bean.account.result.AdjustPositionResult;
+import com.okex.open.api.bean.account.result.Position;
 import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
+import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.account.AccountAPIService;
 import com.okex.open.api.service.account.impl.AccountAPIServiceImpl;
@@ -33,7 +39,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getBalance(){
-        JSONObject result = this.accountAPIService.getBalance("USDT");
+        OkexResponse<List<AccountBalance>> result = this.accountAPIService.getBalance("USDT");
         toResultString(LOG, "result", result);
     }
 
@@ -43,7 +49,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getPositions(){
-        JSONObject result = this.accountAPIService.getPositions("MARGIN",null,null);
+        OkexResponse<List<Position>> result = this.accountAPIService.getPositions(InstrumentType.MARGIN,null,null);
         toResultString(LOG, "result", result);
     }
 
@@ -155,14 +161,14 @@ public class AccountAPITests extends  AccountAPIBaseTests {
         IncreaseDecreaseMargin increaseDecreaseMargin = new IncreaseDecreaseMargin();
 
         increaseDecreaseMargin.setInstId("BTC-USDT-SWAP");
-        increaseDecreaseMargin.setPosSide("long");
-        increaseDecreaseMargin.setType("add");
+        increaseDecreaseMargin.setPosSide(PositionSide.LONG);
+        increaseDecreaseMargin.setType(AdjustType.ADD);
         increaseDecreaseMargin.setAmt("100");
         increaseDecreaseMargin.setLoanTrans(false);
         increaseDecreaseMargin.setCcy("");
         increaseDecreaseMargin.setAuto(false);
 
-        JSONObject result = this.accountAPIService.increaseDecreaseMargin(increaseDecreaseMargin);
+        OkexResponse<List<AdjustPositionResult>> result = this.accountAPIService.increaseDecreaseMargin(increaseDecreaseMargin);
         toResultString(LOG, "result", result);
     }
 
@@ -269,7 +275,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     public void quickMarginBorrowRepay(){
         QuickMarginBorrowRepay quickMarginBorrowRepay = new QuickMarginBorrowRepay();
         quickMarginBorrowRepay.setCcy("BTC");
-        quickMarginBorrowRepay.setSide("repay");
+        quickMarginBorrowRepay.setSide(QuickMarginBorrowRepay.Side.REPAY);
         quickMarginBorrowRepay.setAmt("0.1");
         quickMarginBorrowRepay.setInstId("");
         OkexResponse<List<QuickMarginRepayResult>> result = this.accountAPIService.quickMarginBorrowRepay(quickMarginBorrowRepay);
@@ -420,7 +426,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void setRiskOffsetType(){
         IncreaseDecreaseMargin increaseDecreaseMargin = new IncreaseDecreaseMargin();
-        increaseDecreaseMargin.setType("1");
+        increaseDecreaseMargin.setType(AdjustType.SPOT_DERIVATIVES_USDT);
 
         JSONObject result = this.accountAPIService.setRiskOffsetType(increaseDecreaseMargin);
         toResultString(LOG, "result", result);

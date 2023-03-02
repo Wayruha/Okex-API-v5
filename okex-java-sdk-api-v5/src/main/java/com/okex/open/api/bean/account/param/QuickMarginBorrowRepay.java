@@ -1,12 +1,13 @@
 package com.okex.open.api.bean.account.param;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
 public class QuickMarginBorrowRepay {
     private String instId;
     private String ccy;
-    private String side;
+    private Side side;
     private String amt;
 
     public String getInstId() {
@@ -25,11 +26,11 @@ public class QuickMarginBorrowRepay {
         this.ccy = ccy;
     }
 
-    public String getSide() {
+    public Side getSide() {
         return side;
     }
 
-    public void setSide(String side) {
+    public void setSide(Side side) {
         this.side = side;
     }
 
@@ -49,5 +50,23 @@ public class QuickMarginBorrowRepay {
                 ", side='" + side + '\'' +
                 ", amt='" + amt + '\'' +
                 '}';
+    }
+
+    public enum Side {
+        @SerializedName("borrow")
+        BORROW("borrow"),
+        @SerializedName("repay")
+        REPAY("repay");
+
+        private String code;
+
+        Side(String code) {
+            this.code = code;
+        }
+
+        @Override
+        public String toString() {
+            return code;
+        }
     }
 }

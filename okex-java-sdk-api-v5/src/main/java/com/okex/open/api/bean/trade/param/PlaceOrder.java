@@ -1,14 +1,18 @@
 package com.okex.open.api.bean.trade.param;
 
+import com.okex.open.api.bean.pub.OrderSide;
+import com.okex.open.api.bean.pub.OrderType;
+import com.okex.open.api.bean.pub.TradeMode;
+
 public class PlaceOrder {
     private String instId;
-    private String tdMode;
+    private TradeMode tdMode;
     private String ccy;
     private String clOrdId;
     private String tag;
-    private String side;
+    private OrderSide side;
     private String posSide;
-    private String ordType;
+    private OrderType ordType;
     private String sz;
     private String px;
     private String tgtCcy;
@@ -142,11 +146,11 @@ public class PlaceOrder {
         this.instId = instId;
     }
 
-    public String getTdMode() {
+    public TradeMode getTdMode() {
         return tdMode;
     }
 
-    public void setTdMode(String tdMode) {
+    public void setTdMode(TradeMode tdMode) {
         this.tdMode = tdMode;
     }
 
@@ -174,11 +178,11 @@ public class PlaceOrder {
         this.tag = tag;
     }
 
-    public String getSide() {
+    public OrderSide getSide() {
         return side;
     }
 
-    public void setSide(String side) {
+    public void setSide(OrderSide side) {
         this.side = side;
     }
 
@@ -190,11 +194,11 @@ public class PlaceOrder {
         this.posSide = posSide;
     }
 
-    public String getOrdType() {
+    public OrderType getOrdType() {
         return ordType;
     }
 
-    public void setOrdType(String ordType) {
+    public void setOrdType(OrderType ordType) {
         this.ordType = ordType;
     }
 

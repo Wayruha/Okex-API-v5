@@ -134,7 +134,7 @@ public class WebSocketClient<T> implements WebSocket {
             this.listener.handleCallbackError(this,t);
         }
         StringBuilder builder = new StringBuilder();
-        builder.append("{\"op\":\"login\", \"args\":[\"" + apiKey + "\",\"" + passphrase + "\",\""  + timeStamp + "\",\""   +  hash + "\"]}");
+        builder.append("{\"op\":\"login\", \"args\":[{\"apiKey\":\"" + apiKey + "\",\"passphrase\":\"" + passphrase + "\",\"timestamp\":\""  + timeStamp + "\",\"sign\":\""   +  hash + "\"}]}");
         this.send(builder.toString());
     }
 

@@ -2,6 +2,10 @@ package com.okex.open.api.test.trade;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.pub.InstrumentType;
+import com.okex.open.api.bean.pub.OrderSide;
+import com.okex.open.api.bean.pub.OrderType;
+import com.okex.open.api.bean.pub.TradeMode;
+import com.okex.open.api.bean.trade.Order;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
 import com.okex.open.api.bean.trade.result.OrderHistoryResult;
@@ -15,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class TradeAPITest extends TradeAPIBaseTest {
     private static final Logger LOG = LoggerFactory.getLogger(TradeAPITest.class);
@@ -36,13 +41,13 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
         PlaceOrder placeOrder =new PlaceOrder();
         placeOrder.setInstId("LTC-USDT-SWAP");
-        placeOrder.setTdMode("cross");
+        placeOrder.setTdMode(TradeMode.CROSS);
 //        placeOrder.setCcy("USDT");
         placeOrder.setClOrdId("0423a3a06");
 //        placeOrder.setTag("");
-        placeOrder.setSide("sell");
+        placeOrder.setSide(OrderSide.SELL);
         placeOrder.setPosSide("short");
-        placeOrder.setOrdType("market");
+        placeOrder.setOrdType(OrderType.MARKET);
         placeOrder.setSz("1");
         placeOrder.setQuickMgnType("");
 //        placeOrder.setPx("60000");
@@ -57,7 +62,7 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder.setTpTriggerPx("");
         placeOrder.setTpTriggerPxType("");*/
 
-        JSONObject result = tradeAPIService.placeOrder(placeOrder);
+        OkexResponse<List<Order>> result = tradeAPIService.placeOrder(placeOrder);
 
         toResultString(LOG, "result", result);
     }
@@ -74,13 +79,13 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
         PlaceOrder placeOrder1 =new PlaceOrder();
         placeOrder1.setInstId("TRX-USDT");
-        placeOrder1.setTdMode("isolated");
+        placeOrder1.setTdMode(TradeMode.ISOLATED);
         placeOrder1.setCcy("");
         placeOrder1.setClOrdId("123testspot07");
         placeOrder1.setTag("");
-        placeOrder1.setSide("sell");
+        placeOrder1.setSide(OrderSide.SELL);
         placeOrder1.setPosSide("");
-        placeOrder1.setOrdType("limit");
+        placeOrder1.setOrdType(OrderType.LIMIT);
         placeOrder1.setSz("10");
         placeOrder1.setPx("0.09");
         placeOrder1.setReduceOnly(null);
@@ -97,13 +102,13 @@ public class TradeAPITest extends TradeAPIBaseTest {
 
         PlaceOrder placeOrder2=new PlaceOrder();
         placeOrder2.setInstId("BTC-USDT-211231");
-        placeOrder2.setTdMode("cross");
+        placeOrder2.setTdMode(TradeMode.CROSS);
         placeOrder2.setCcy("");
         placeOrder2.setClOrdId("testfutures07");
         placeOrder2.setTag("");
-        placeOrder2.setSide("buy");
+        placeOrder2.setSide(OrderSide.BUY);
         placeOrder2.setPosSide("long");
-        placeOrder2.setOrdType("limit");
+        placeOrder2.setOrdType(OrderType.LIMIT);
         placeOrder2.setSz("2");
         placeOrder2.setPx("24633");
         placeOrder2.setReduceOnly(null);
