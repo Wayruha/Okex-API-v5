@@ -6,9 +6,11 @@ import lombok.Data;
 @Data
 public class QuickMarginBorrowRepay {
     private String instId;
-    private String ccy;
+    @SerializedName("ccy")
+    private String currency;
     private Side side;
-    private String amt;
+    @SerializedName("amt")
+    private String amount;
 
     public String getInstId() {
         return instId;
@@ -18,12 +20,12 @@ public class QuickMarginBorrowRepay {
         this.instId = instId;
     }
 
-    public String getCcy() {
-        return ccy;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setCcy(String ccy) {
-        this.ccy = ccy;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public Side getSide() {
@@ -34,21 +36,21 @@ public class QuickMarginBorrowRepay {
         this.side = side;
     }
 
-    public String getAmt() {
-        return amt;
+    public String getAmount() {
+        return amount;
     }
 
-    public void setAmt(String amt) {
-        this.amt = amt;
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
     @Override
     public String toString() {
         return "QuickMarginBorrowRepay{" +
                 "instId='" + instId + '\'' +
-                ", ccy='" + ccy + '\'' +
+                ", ccy='" + currency + '\'' +
                 ", side='" + side + '\'' +
-                ", amt='" + amt + '\'' +
+                ", amt='" + amount + '\'' +
                 '}';
     }
 

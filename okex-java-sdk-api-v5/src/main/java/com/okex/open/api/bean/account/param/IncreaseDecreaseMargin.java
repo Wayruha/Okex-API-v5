@@ -1,5 +1,6 @@
 package com.okex.open.api.bean.account.param;
 
+import com.google.gson.annotations.SerializedName;
 import com.okex.open.api.bean.account.AdjustType;
 import com.okex.open.api.bean.account.PositionSide;
 
@@ -7,9 +8,11 @@ public class IncreaseDecreaseMargin {
     private String instId;
     private PositionSide posSide;
     private AdjustType type;
-    private String amt;
+    @SerializedName("amt")
+    private String amount;
     private Boolean loanTrans;
-    private String ccy;
+    @SerializedName("ccy")
+    private String currency;
     private Boolean auto;
 
     @Override
@@ -18,19 +21,19 @@ public class IncreaseDecreaseMargin {
                 "instId='" + instId + '\'' +
                 ", posSide='" + posSide + '\'' +
                 ", type='" + type + '\'' +
-                ", amt='" + amt + '\'' +
+                ", amt='" + amount + '\'' +
                 ", loanTrans=" + loanTrans +
-                ", ccy='" + ccy + '\'' +
+                ", ccy='" + currency + '\'' +
                 ", auto=" + auto +
                 '}';
     }
 
     public String getCcy() {
-        return ccy;
+        return currency;
     }
 
     public void setCcy(String ccy) {
-        this.ccy = ccy;
+        this.currency = ccy;
     }
 
     public Boolean getAuto() {
@@ -74,11 +77,11 @@ public class IncreaseDecreaseMargin {
     }
 
     public String getAmt() {
-        return amt;
+        return amount;
     }
 
     public void setAmt(String amt) {
-        this.amt = amt;
+        this.amount = amt;
     }
 
 

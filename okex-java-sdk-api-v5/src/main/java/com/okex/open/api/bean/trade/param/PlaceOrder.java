@@ -1,21 +1,28 @@
 package com.okex.open.api.bean.trade.param;
 
+import com.google.gson.annotations.SerializedName;
 import com.okex.open.api.bean.pub.OrderSide;
 import com.okex.open.api.bean.pub.OrderType;
 import com.okex.open.api.bean.pub.TradeMode;
 
 public class PlaceOrder {
     private String instId;
-    private TradeMode tdMode;
-    private String ccy;
-    private String clOrdId;
+    @SerializedName("tdMode")
+    private TradeMode tradeMode;
+    @SerializedName("ccy")
+    private String currency;
+    @SerializedName("clOrdId")
+    private String clientOrderId;
     private String tag;
     private OrderSide side;
     private String posSide;
     private OrderType ordType;
-    private String sz;
-    private String px;
-    private String tgtCcy;
+    @SerializedName("sz")
+    private String size;
+    @SerializedName("px")
+    private String price;
+    @SerializedName("tgtCcy")
+    private String currencyTypeUsed;
 
     public String getQuickMgnType() {
         return quickMgnType;
@@ -86,16 +93,16 @@ public class PlaceOrder {
     public String toString() {
         return "PlaceOrder{" +
                 "instId='" + instId + '\'' +
-                ", tdMode='" + tdMode + '\'' +
-                ", ccy='" + ccy + '\'' +
-                ", clOrdId='" + clOrdId + '\'' +
+                ", tdMode='" + tradeMode + '\'' +
+                ", ccy='" + currency + '\'' +
+                ", clOrdId='" + clientOrderId + '\'' +
                 ", tag='" + tag + '\'' +
                 ", side='" + side + '\'' +
                 ", posSide='" + posSide + '\'' +
                 ", ordType='" + ordType + '\'' +
-                ", sz='" + sz + '\'' +
-                ", px='" + px + '\'' +
-                ", tgtCcy='" + tgtCcy + '\'' +
+                ", sz='" + size + '\'' +
+                ", px='" + price + '\'' +
+                ", tgtCcy='" + currencyTypeUsed + '\'' +
                 ", banAmend=" + banAmend +
                 ", reduceOnly=" + reduceOnly +
                 ", tpTriggerPx='" + tpTriggerPx + '\'' +
@@ -120,12 +127,12 @@ public class PlaceOrder {
 
 
 
-    public String getTgtCcy() {
-        return tgtCcy;
+    public String getCurrencyTypeUsed() {
+        return currencyTypeUsed;
     }
 
-    public void setTgtCcy(String tgtCcy) {
-        this.tgtCcy = tgtCcy;
+    public void setCurrencyTypeUsed(String currencyTypeUsed) {
+        this.currencyTypeUsed = currencyTypeUsed;
     }
 
     public Boolean getReduceOnly() {
@@ -147,27 +154,27 @@ public class PlaceOrder {
     }
 
     public TradeMode getTdMode() {
-        return tdMode;
+        return tradeMode;
     }
 
     public void setTdMode(TradeMode tdMode) {
-        this.tdMode = tdMode;
+        this.tradeMode = tdMode;
     }
 
-    public String getCcy() {
-        return ccy;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setCcy(String ccy) {
-        this.ccy = ccy;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
-    public String getClOrdId() {
-        return clOrdId;
+    public String getClientOrderId() {
+        return clientOrderId;
     }
 
-    public void setClOrdId(String clOrdId) {
-        this.clOrdId = clOrdId;
+    public void setClientOrderId(String clientOrderId) {
+        this.clientOrderId = clientOrderId;
     }
 
     public String getTag() {
@@ -202,20 +209,20 @@ public class PlaceOrder {
         this.ordType = ordType;
     }
 
-    public String getSz() {
-        return sz;
+    public String getSize() {
+        return size;
     }
 
-    public void setSz(String sz) {
-        this.sz = sz;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public String getPx() {
-        return px;
+    public String getPrice() {
+        return price;
     }
 
-    public void setPx(String px) {
-        this.px = px;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
 

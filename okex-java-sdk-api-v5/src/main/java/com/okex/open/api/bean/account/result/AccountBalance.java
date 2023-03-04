@@ -1,6 +1,7 @@
 package com.okex.open.api.bean.account.result;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,14 +13,20 @@ import java.util.List;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AccountBalance {
-    private String adjEq;
-    private String imr;
-    private String isoEq;
+    @SerializedName("adjEq")
+    private String totalUsdAmount;
+    @SerializedName("imr")
+    private String initMarginRequirement;
+    @SerializedName("isoEq")
+    private String isoAmount;
     private String mgnRatio;
-    private String mmr;
+    @SerializedName("mmr")
+    private String minimalMarginRequirement;
     private String notionalUsd;
-    private String ordFroz;
-    private String totalEq;
+    @SerializedName("ordFroz")
+    private String crossmOrderFrozen;
+    @SerializedName("totalEq")
+    private String totalAmount;
     private String uTime;
     private List<Details> details;
 
@@ -31,26 +38,35 @@ public class AccountBalance {
         private String availBal;
         private String availEq;
         private String cashBal;
-        private String ccy;
+        @SerializedName("ccy")
+        private String currency;
         private String crossLiab;
-        private String disEq;
-        private String eq;
-        private String eqUsd;
+        @SerializedName("disEq")
+        private String discountAmount;
+        @SerializedName("eq")
+        private String amount;
+        @SerializedName("eqUsd")
+        private String usdAmount;
         private String frozenBal;
         private String interest;
         private String isoEq;
         private String isoLiab;
-        private String isoUpl;
+        @SerializedName("isoUpl")
+        private String unrealizedIsolatedProfit;
         private String liab;
         private String maxLoan;
         private String mgnRatio;
         private String notionalLever;
+        @SerializedName("ordFrozen")
         private String ordFrozen;
         private String twap;
         private String uTime;
-        private String upl;
-        private String uplLiab;
-        private String stgyEq;
+        @SerializedName("upl")
+        private String unrealizedProfit;
+        @SerializedName("uplLiab")
+        private String unrealizedLossLiability;
+        @SerializedName("stgyEq")
+        private String strategyAmount;
         private String spotInUseAmt;
     }
 }

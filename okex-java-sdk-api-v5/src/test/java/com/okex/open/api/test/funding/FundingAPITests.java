@@ -66,8 +66,8 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void fundsTransfer() {
         FundsTransfer fundsTransfer = new FundsTransfer();
-        fundsTransfer.setCcy("USDT");
-        fundsTransfer.setAmt("1");
+        fundsTransfer.setCurrency("USDT");
+        fundsTransfer.setAmount("1");
 //        fundsTransfer.setType("0");
         fundsTransfer.setFrom(Direction.TRADING_ACC);
         fundsTransfer.setTo(Direction.FUNDING_ACC);

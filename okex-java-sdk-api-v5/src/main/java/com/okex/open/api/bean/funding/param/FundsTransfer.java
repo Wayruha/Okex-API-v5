@@ -1,14 +1,18 @@
 package com.okex.open.api.bean.funding.param;
 
+import com.google.gson.annotations.SerializedName;
 import com.okex.open.api.bean.funding.Direction;
 
 public class FundsTransfer {
-    private String ccy;
-    private String amt;
+    @SerializedName("ccy")
+    private String currency;
+    @SerializedName("amt")
+    private String amount;
     private String type;
     private Direction from;
     private Direction to;
-    private String subAcct;
+    @SerializedName("subAcct")
+    private String subAccountName;
     private String clientId;
     private Boolean loanTrans;
 
@@ -38,20 +42,20 @@ public class FundsTransfer {
         this.loanTrans = loanTrans;
     }
 
-    public String getCcy() {
-        return ccy;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setCcy(String ccy) {
-        this.ccy = ccy;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
-    public String getAmt() {
-        return amt;
+    public String getAmount() {
+        return amount;
     }
 
-    public void setAmt(String amt) {
-        this.amt = amt;
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
     public String getType() {
@@ -78,12 +82,12 @@ public class FundsTransfer {
         this.to = to;
     }
 
-    public String getSubAcct() {
-        return subAcct;
+    public String getSubAccountName() {
+        return subAccountName;
     }
 
-    public void setSubAcct(String subAcct) {
-        this.subAcct = subAcct;
+    public void setSubAccountName(String subAccountName) {
+        this.subAccountName = subAccountName;
     }
 
 
@@ -91,12 +95,12 @@ public class FundsTransfer {
     @Override
     public String toString() {
         return "FundsTransfer{" +
-                "ccy='" + ccy + '\'' +
-                ", amt='" + amt + '\'' +
+                "ccy='" + currency + '\'' +
+                ", amt='" + amount + '\'' +
                 ", type='" + type + '\'' +
                 ", from='" + from + '\'' +
                 ", to='" + to + '\'' +
-                ", subAcct='" + subAcct + '\'' +
+                ", subAcct='" + subAccountName + '\'' +
                 ", instId='" + clientId + '\'' +
                 ", loanTrans=" + loanTrans +
                 '}';

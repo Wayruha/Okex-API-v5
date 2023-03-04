@@ -1,5 +1,6 @@
 package com.okex.open.api.bean.account.result;
 
+import com.google.gson.annotations.SerializedName;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.bean.pub.MarginMode;
 import lombok.AllArgsConstructor;
@@ -11,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Position {
     private String instId;
-    private String ccy;
+    @SerializedName("ccy")
+    private String currency;
     private InstrumentType instType;
     private MarginMode mgnMode;
     private String baseBal;

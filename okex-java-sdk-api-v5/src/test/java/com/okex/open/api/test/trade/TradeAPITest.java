@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class TradeAPITest extends TradeAPIBaseTest {
     private static final Logger LOG = LoggerFactory.getLogger(TradeAPITest.class);
@@ -43,12 +42,12 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder.setInstId("LTC-USDT-SWAP");
         placeOrder.setTdMode(TradeMode.CROSS);
 //        placeOrder.setCcy("USDT");
-        placeOrder.setClOrdId("0423a3a06");
+        placeOrder.setClientOrderId("0423a3a06");
 //        placeOrder.setTag("");
         placeOrder.setSide(OrderSide.SELL);
         placeOrder.setPosSide("short");
         placeOrder.setOrdType(OrderType.MARKET);
-        placeOrder.setSz("1");
+        placeOrder.setSize("1");
         placeOrder.setQuickMgnType("");
 //        placeOrder.setPx("60000");
 //        placeOrder.setReduceOnly(false);
@@ -80,14 +79,14 @@ public class TradeAPITest extends TradeAPIBaseTest {
         PlaceOrder placeOrder1 =new PlaceOrder();
         placeOrder1.setInstId("TRX-USDT");
         placeOrder1.setTdMode(TradeMode.ISOLATED);
-        placeOrder1.setCcy("");
-        placeOrder1.setClOrdId("123testspot07");
+        placeOrder1.setCurrency("");
+        placeOrder1.setClientOrderId("123testspot07");
         placeOrder1.setTag("");
         placeOrder1.setSide(OrderSide.SELL);
         placeOrder1.setPosSide("");
         placeOrder1.setOrdType(OrderType.LIMIT);
-        placeOrder1.setSz("10");
-        placeOrder1.setPx("0.09");
+        placeOrder1.setSize("10");
+        placeOrder1.setPrice("0.09");
         placeOrder1.setReduceOnly(null);
         placeOrder1.setQuickMgnType("");
 //        placeOrder1.setTgtCcy("");
@@ -103,14 +102,14 @@ public class TradeAPITest extends TradeAPIBaseTest {
         PlaceOrder placeOrder2=new PlaceOrder();
         placeOrder2.setInstId("BTC-USDT-211231");
         placeOrder2.setTdMode(TradeMode.CROSS);
-        placeOrder2.setCcy("");
-        placeOrder2.setClOrdId("testfutures07");
+        placeOrder2.setCurrency("");
+        placeOrder2.setClientOrderId("testfutures07");
         placeOrder2.setTag("");
         placeOrder2.setSide(OrderSide.BUY);
         placeOrder2.setPosSide("long");
         placeOrder2.setOrdType(OrderType.LIMIT);
-        placeOrder2.setSz("2");
-        placeOrder2.setPx("24633");
+        placeOrder2.setSize("2");
+        placeOrder2.setPrice("24633");
         placeOrder2.setReduceOnly(null);
         placeOrder2.setQuickMgnType("");
 //        placeOrder2.setTgtCcy("");

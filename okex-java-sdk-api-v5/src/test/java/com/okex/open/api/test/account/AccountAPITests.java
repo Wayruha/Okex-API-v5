@@ -274,9 +274,9 @@ public class AccountAPITests extends  AccountAPIBaseTests {
     @Test
     public void quickMarginBorrowRepay(){
         QuickMarginBorrowRepay quickMarginBorrowRepay = new QuickMarginBorrowRepay();
-        quickMarginBorrowRepay.setCcy("BTC");
+        quickMarginBorrowRepay.setCurrency("BTC");
         quickMarginBorrowRepay.setSide(QuickMarginBorrowRepay.Side.REPAY);
-        quickMarginBorrowRepay.setAmt("0.1");
+        quickMarginBorrowRepay.setAmount("0.1");
         quickMarginBorrowRepay.setInstId("");
         OkexResponse<List<QuickMarginRepayResult>> result = this.accountAPIService.quickMarginBorrowRepay(quickMarginBorrowRepay);
         toResultString(LOG, "result", result);

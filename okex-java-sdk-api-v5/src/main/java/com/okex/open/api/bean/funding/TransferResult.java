@@ -1,5 +1,6 @@
 package com.okex.open.api.bean.funding;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class TransferResult {
     private String transId;
-    private String ccy;
+    @SerializedName("ccy")
+    private String currency;
     private String clientId;
     private Direction from;
-    private BigDecimal amt;
+    @SerializedName("amt")
+    private BigDecimal amount;
     private Direction to;
 }
