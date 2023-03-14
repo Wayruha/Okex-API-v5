@@ -71,13 +71,13 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     //设置持仓模式 Set Position mode
     @Override
     public JSONObject setPositionMode(SetPositionMode setPositionMode) {
-        return this.client.executeSync(this.api.setPositionMode(JSONObject.parseObject(JSON.toJSONString(setPositionMode))));
+        return this.client.executeSync(this.api.setPositionMode(setPositionMode));
     }
 
     //设置杠杆倍数 Set Leverage
     @Override
     public JSONObject setLeverage(SetLeverage setLeverage) {
-        return this.client.executeSync(this.api.setLeverage(JSONObject.parseObject(JSON.toJSONString(setLeverage))));
+        return this.client.executeSync(this.api.setLeverage(setLeverage));
     }
 
     //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
@@ -137,7 +137,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     //逐仓交易设置 Isolated margin trading settings
     @Override
     public JSONObject setIsolatedMode(SetIsolatedMode setIsolatedMode) {
-        return this.client.executeSync(this.api.setIsolatedMode(JSONObject.parseObject(JSON.toJSONString(setIsolatedMode))));
+        return this.client.executeSync(this.api.setIsolatedMode(setIsolatedMode));
     }
 
     //查看账户最大可转余额 Get Maximum Withdrawals
@@ -155,7 +155,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     //一键借币模式手动借币还币 Manual borrow and repay in Quick Margin Mode
     @Override
     public OkexResponse<List<QuickMarginRepayResult>> quickMarginBorrowRepay(QuickMarginBorrowRepay quickMarginBorrowRepay) {
-        return this.client.executeSync(this.api.quickMarginBorrowRepay(JSONObject.parseObject(JSON.toJSONString(quickMarginBorrowRepay))));
+        return this.client.executeSync(this.api.quickMarginBorrowRepay(quickMarginBorrowRepay));
     }
 
     //获取一键借币还币历史 Get manual borrow and repay history in Quick Margin Mode
@@ -167,7 +167,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     //尊享借币还币  VIP loans borrow and repay
     @Override
     public JSONObject borrowRepay(AccountBorrowRepay accountBorrowRepay) {
-        return this.client.executeSync(this.api.borrowRepay(JSONObject.parseObject(JSON.toJSONString(accountBorrowRepay))));
+        return this.client.executeSync(this.api.borrowRepay(accountBorrowRepay));
     }
 
     //获取尊享借币借还历史  Get borrow and repay history for VIP loans
@@ -209,7 +209,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     //组合保证金的虚拟持仓保证金计算 Position builder
     @Override
     public JSONObject simulatedMargin(SimulatedMargin simulatedMargin) {
-        return this.client.executeSync(this.api.simulatedMargin(JSONObject.parseObject(JSON.toJSONString(simulatedMargin))));
+        return this.client.executeSync(this.api.simulatedMargin(simulatedMargin));
     }
 
     //查看账户Greeks Get Greeks
@@ -227,7 +227,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
     //设置组合保证金账户风险对冲模式 Set risk offset type
     @Override
     public JSONObject setRiskOffsetType(IncreaseDecreaseMargin increaseDecreaseMargin) {
-        return this.client.executeSync(this.api.setRiskOffsetType(JSONObject.parseObject(JSON.toJSONString(increaseDecreaseMargin))));
+        return this.client.executeSync(this.api.setRiskOffsetType(increaseDecreaseMargin));
     }
 
     //开通期权交易 Activate option

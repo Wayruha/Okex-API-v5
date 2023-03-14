@@ -1,10 +1,7 @@
 package com.okex.open.api.test.trade;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.pub.InstrumentType;
-import com.okex.open.api.bean.pub.OrderSide;
-import com.okex.open.api.bean.pub.OrderType;
-import com.okex.open.api.bean.pub.TradeMode;
+import com.okex.open.api.bean.pub.*;
 import com.okex.open.api.bean.trade.Order;
 import com.okex.open.api.bean.trade.result.OneClickRepayResult;
 import com.okex.open.api.bean.trade.param.*;
@@ -48,7 +45,6 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder.setPosSide("short");
         placeOrder.setOrdType(OrderType.MARKET);
         placeOrder.setSize("1");
-        placeOrder.setQuickMgnType("");
 //        placeOrder.setPx("60000");
 //        placeOrder.setReduceOnly(false);
 //        placeOrder.setTgtCcy("");
@@ -88,7 +84,6 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder1.setSize("10");
         placeOrder1.setPrice("0.09");
         placeOrder1.setReduceOnly(null);
-        placeOrder1.setQuickMgnType("");
 //        placeOrder1.setTgtCcy("");
 //        placeOrder1.setBanAmend(false);
         //止盈止损参数
@@ -111,7 +106,6 @@ public class TradeAPITest extends TradeAPIBaseTest {
         placeOrder2.setSize("2");
         placeOrder2.setPrice("24633");
         placeOrder2.setReduceOnly(null);
-        placeOrder2.setQuickMgnType("");
 //        placeOrder2.setTgtCcy("");
 //        placeOrder2.setBanAmend(false);
         //止盈止损参数

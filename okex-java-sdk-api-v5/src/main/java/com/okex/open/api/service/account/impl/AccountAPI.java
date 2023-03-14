@@ -1,7 +1,7 @@
 package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.account.param.IncreaseDecreaseMargin;
+import com.okex.open.api.bean.account.param.*;
 import com.okex.open.api.bean.account.result.AccountBalance;
 import com.okex.open.api.bean.account.result.AdjustPositionResult;
 import com.okex.open.api.bean.account.result.Position;
@@ -62,11 +62,11 @@ public interface AccountAPI {
 
     //设置持仓模式 Set Position mode
     @POST("/api/v5/account/set-position-mode")
-    Call<JSONObject> setPositionMode(@Body JSONObject jsonObject);
+    Call<JSONObject> setPositionMode(@Body SetPositionMode jsonObject);
 
     //设置杠杆倍数 Set Leverage
     @POST("/api/v5/account/set-leverage")
-    Call<JSONObject> setLeverage(@Body JSONObject jsonObject);
+    Call<JSONObject> setLeverage(@Body SetLeverage jsonObject);
 
     //获取最大可买卖/开仓数量 Get maximum buy/sell amount or open amount
     @GET("/api/v5/account/max-size")
@@ -106,7 +106,7 @@ public interface AccountAPI {
 
     //逐仓交易设置 Isolated margin trading settings
     @POST("/api/v5/account/set-isolated-mode")
-    Call<JSONObject> setIsolatedMode(@Body JSONObject jsonObject);
+    Call<JSONObject> setIsolatedMode(@Body SetIsolatedMode jsonObject);
 
     //查看账户最大可转余额 Get Maximum Withdrawals
     @GET("/api/v5/account/max-withdrawal")
@@ -118,7 +118,7 @@ public interface AccountAPI {
 
     //一键借币模式手动借币还币 Manual borrow and repay in Quick Margin Mode
     @POST("/api/v5/account/quick-margin-borrow-repay")
-    Call<OkexResponse<List<QuickMarginRepayResult>>> quickMarginBorrowRepay(@Body JSONObject jsonObject);
+    Call<OkexResponse<List<QuickMarginRepayResult>>> quickMarginBorrowRepay(@Body QuickMarginBorrowRepay jsonObject);
 
     //获取一键借币还币历史 Get manual borrow and repay history in Quick Margin Mode
     @GET("/api/v5/account/borrow-repay-history")
@@ -126,7 +126,7 @@ public interface AccountAPI {
 
     //尊享借币还币  VIP loans borrow and repay
     @POST("/api/v5/account/borrow-repay")
-    Call<JSONObject> borrowRepay(@Body JSONObject parseObject);
+    Call<JSONObject> borrowRepay(@Body AccountBorrowRepay parseObject);
 
     //获取尊享借币借还历史  Get borrow and repay history for VIP loans
     @GET("/api/v5/account/borrow-repay-history")
@@ -154,7 +154,7 @@ public interface AccountAPI {
 
     //组合保证金的虚拟持仓保证金计算 Position builder
     @POST("/api/v5/account/simulated_margin")
-    Call<JSONObject> simulatedMargin(@Body JSONObject parseObject);
+    Call<JSONObject> simulatedMargin(@Body SimulatedMargin parseObject);
 
     //查看账户Greeks Get Greeks
     @GET("/api/v5/account/greeks")
@@ -166,7 +166,7 @@ public interface AccountAPI {
 
     // 设置组合保证金账户风险对冲模式 Set risk offset type
     @POST("/api/v5/account/set-riskOffset-type")
-    Call<JSONObject> setRiskOffsetType(@Body JSONObject parseObject);
+    Call<JSONObject> setRiskOffsetType(@Body IncreaseDecreaseMargin parseObject);
 
     //开通期权交易 Activate option
     @POST("/api/v5/account/activate-option")

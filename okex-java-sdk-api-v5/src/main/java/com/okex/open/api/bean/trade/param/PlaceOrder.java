@@ -3,6 +3,7 @@ package com.okex.open.api.bean.trade.param;
 import com.google.gson.annotations.SerializedName;
 import com.okex.open.api.bean.pub.OrderSide;
 import com.okex.open.api.bean.pub.OrderType;
+import com.okex.open.api.bean.pub.QuickMarginType;
 import com.okex.open.api.bean.pub.TradeMode;
 
 public class PlaceOrder {
@@ -23,16 +24,16 @@ public class PlaceOrder {
     private String price;
     @SerializedName("tgtCcy")
     private String currencyTypeUsed;
+    @SerializedName("quickMgnType")
+    private QuickMarginType quickMarginType;
 
-    public String getQuickMgnType() {
-        return quickMgnType;
+    public QuickMarginType getQuickMarginType() {
+        return quickMarginType;
     }
 
-    public void setQuickMgnType(String quickMgnType) {
-        this.quickMgnType = quickMgnType;
+    public void setQuickMarginType(QuickMarginType quickMarginType) {
+        this.quickMarginType = quickMarginType;
     }
-
-    private String quickMgnType;
 
     public String getTpTriggerPx() {
         return tpTriggerPx;
@@ -111,7 +112,7 @@ public class PlaceOrder {
                 ", slOrdPx='" + slOrdPx + '\'' +
                 ", tpTriggerPxType=" + tpTriggerPxType +
                 ", slTriggerPxType=" + slTriggerPxType +
-                ", quickMgnType=" + quickMgnType +
+                ", quickMgnType=" + quickMarginType +
                 '}';
     }
 
