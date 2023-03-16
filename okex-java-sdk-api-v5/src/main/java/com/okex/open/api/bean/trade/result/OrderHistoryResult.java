@@ -48,7 +48,7 @@ public class OrderHistoryResult {
     private String tpOrderPrice;
     @SerializedName("slTriggerPx")
     private String slTriggerPrice;
-    @SerializedName("tpTriggerPxType")
+    @SerializedName("slTriggerPxType")
     private String slTriggerPriceType;
     @SerializedName("slOrdPx")
     private String slOrderPrice;
