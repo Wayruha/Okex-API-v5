@@ -60,14 +60,11 @@ public class WebSocketClientHandler<T> extends SimpleChannelInboundHandler<Objec
             String txt = ((TextWebSocketFrame) frame).text();
             if (txt.equals("pong")) {
                 webSocketClient.listener.onWebsocketPong(webSocketClient);
-            } else if (txt.contains("\"data\":[{\"asks\":[") && txt.contains("],\"bids\":[")) {
+           } else if (txt.contains("\"data\":[{")) {
                 webSocketClient.listener.onResponse(webSocketClient, parseResponse(txt, webSocketClient.listener.getType()));
-            } else if (txt.contains("\"data\":[{") && txt.contains("\"details\":[{")) {
-                webSocketClient.listener.onResponse(webSocketClient, parseResponse(txt, webSocketClient.listener.getType()));
-            }
-            webSocketClient.listener.onText(webSocketClient, txt);
+            } else webSocketClient.listener.onText(webSocketClient, txt);
         } else {
-            webSocketClient.listener.handleCallbackError(webSocketClient, new RuntimeException("cannot decode message"));
+            webSocketClient.listener.handleCallbackError(webSocketClient, new RuntimeException("cannot decode message:" + frame.toString()));
         }
     }
 

@@ -18,13 +18,14 @@ public class AccountBalance {
     @SerializedName("imr")
     private String initMarginRequirement;
     @SerializedName("isoEq")
-    private String isoAmount;
-    private String mgnRatio;
+    private String isolatedAmount;
+    @SerializedName("mgnRatio")
+    private String marginRatio;
     @SerializedName("mmr")
     private String minimalMarginRequirement;
     private String notionalUsd;
     @SerializedName("ordFroz")
-    private String crossmOrderFrozen;
+    private String orderFrozenQty;
     @SerializedName("totalEq")
     private String totalAmount;
     private String uTime;
@@ -35,31 +36,42 @@ public class AccountBalance {
     @NoArgsConstructor
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Details {
-        private String availBal;
-        private String availEq;
-        private String cashBal;
+        @SerializedName("availBal")
+        private String availableBalance;
+        @SerializedName("availEq")
+        private String availableEquity;
+        @SerializedName("cashBal")
+        private String cashBalance;
         @SerializedName("ccy")
         private String currency;
-        private String crossLiab;
+        @SerializedName("crossLiab")
+        private String crossLiability;
         @SerializedName("disEq")
         private String discountAmount;
         @SerializedName("eq")
-        private String amount;
+        private String equity;
         @SerializedName("eqUsd")
         private String usdAmount;
-        private String frozenBal;
+        @SerializedName("frozenBal")
+        private String frozenBalance;
         private String interest;
-        private String isoEq;
-        private String isoLiab;
+        @SerializedName("isoEq")
+        private String isolatedEquity;
+        @SerializedName("isoLiab")
+        private String isolatedLiability;
         @SerializedName("isoUpl")
         private String unrealizedIsolatedProfit;
-        private String liab;
+        @SerializedName("liab")
+        private String liabilities;
         private String maxLoan;
-        private String mgnRatio;
-        private String notionalLever;
+        @SerializedName("mgnRatio")
+        private String marginRatio;
+        @SerializedName("notionalLever")
+        private String notionalLeverage;
         @SerializedName("ordFrozen")
-        private String ordFrozen;
-        private String twap;
+        private String orderMarginFrozen;
+        @SerializedName("twap")
+        private String twapIndicator;
         private String uTime;
         @SerializedName("upl")
         private String unrealizedProfit;
