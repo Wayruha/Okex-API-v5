@@ -1,7 +1,7 @@
 package com.okex.open.api.bean.other;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,10 +23,10 @@ public class BalanceAndPositionUpdate {
     @NoArgsConstructor
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class BalanceData {
-        @SerializedName("ccy")
+        @JsonProperty("ccy")
         private String ccy;
         private BigDecimal cashBal;
-        @SerializedName("uTime")
+        @JsonProperty("uTime")
         private Long updateTime;
     }
 }
