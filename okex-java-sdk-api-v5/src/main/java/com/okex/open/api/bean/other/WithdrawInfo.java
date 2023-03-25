@@ -1,5 +1,6 @@
 package com.okex.open.api.bean.other;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -10,43 +11,57 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DepositInfo {
-    @JsonProperty("actualDepBlkConfirm")
-    private String actualDepBlockchainConfirm;
+public class WithdrawInfo {
+    @JsonProperty("addrEx")
+    private String addressAttachment;
     @JsonProperty("amt")
     private String amount;
     private String areaCodeFrom;
+    private String areaCodeTo;
     @JsonProperty("ccy")
     private String currency;
     private String chain;
-    private String depId;
+    private String clientId;
+    private String fee;
+    private String feeCcy;
     private String from;
-    @JsonProperty("fromWdId")
-    private String fromWithdrawalId;
+    private String memo;
+    private String nonTradableAsset;
     @JsonProperty("pTime")
     private String pushTime;
-    private DepositState state;
+    @JsonProperty("pmtId")
+    private String paymentId;
+    private WithdrawState state;
     private String subAcct;
+    private String tag;
     private String to;
     @JsonProperty("ts")
     private String timestamp;
     private String txId;
     private String uid;
+    @JsonProperty("wdId")
+    private String withdrawalId;
 
-    public enum DepositState {
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public enum WithdrawState {
         @JsonProperty("0")
-        WAITING_FOR_CONFIRMATION,
+        CANCELLING,
         @JsonProperty("1")
-        CREATED,
+        CANCELLED,
         @JsonProperty("2")
-        SUCCESSFUL,
+        FAILED,
         @JsonProperty("8")
-        PENDING,
+        WAITING_WITHDRAWAL,
         @JsonProperty("11")
-        ADDRESS_BLACKLIST_MATCHED,
+        WITHDRAWING,
         @JsonProperty("12")
-        ACC_OR_DEPOSIT_FROZEN,
+        WITHDRAW_SUCCESS,
+        @JsonProperty("")
+        APPROVED,
         @JsonProperty("13")
-        SUBACC_DEPOSIT_INTERSECTION;
+        WAITING_TRANSFER,
+        @JsonProperty("4")
+        @JsonAlias(value = {"5", "6", "8", "9", "12"})
+        WAITING_MANUAL_REVIEW;
     }
 }

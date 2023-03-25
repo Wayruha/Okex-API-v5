@@ -1,5 +1,6 @@
 package com.okex.open.api.bean.other;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.bean.pub.MarginMode;
@@ -12,6 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PositionUpdate {
     private String pTime;
     private String eventType;
