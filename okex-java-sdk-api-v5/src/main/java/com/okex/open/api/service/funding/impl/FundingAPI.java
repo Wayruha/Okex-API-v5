@@ -1,10 +1,7 @@
 package com.okex.open.api.service.funding.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.funding.Currency;
-import com.okex.open.api.bean.funding.DepositAddress;
-import com.okex.open.api.bean.funding.FundingBalance;
-import com.okex.open.api.bean.funding.TransferResult;
+import com.okex.open.api.bean.funding.*;
 import com.okex.open.api.bean.funding.param.FundsTransfer;
 import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
@@ -41,7 +38,7 @@ public interface FundingAPI {
 
     //提币 Withdrawal
     @POST("/api/v5/asset/withdrawal")
-    Call<JSONObject> Withdrawal(@Body JSONObject jsonObject);
+    Call<OkexResponse<List<WithdrawResult>>> withdrawal(@Body JSONObject jsonObject);
 
     //获取提币记录 Get Withdrawal History
     @GET("/api/v5/asset/withdrawal-history")

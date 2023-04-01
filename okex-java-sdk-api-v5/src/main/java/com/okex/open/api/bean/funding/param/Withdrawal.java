@@ -1,26 +1,50 @@
 package com.okex.open.api.bean.funding.param;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Withdrawal {
-    private String ccy;
+    @SerializedName("ccy")
+    private String currency;
     private String chain;
-    private String amt;
-    private String dest;
-    private String toAddr;
+    @SerializedName("amt")
+    private String amount;
+    @SerializedName("dest")
+    private Destination destination;
+    @SerializedName("toAddr")
+    private String toAddress;
     private String clientId;
-    private String wdId;
+    @SerializedName("wdId")
+    private String withdrawalId;
 
     private String areaCode;
+
+    public enum Destination {
+        @SerializedName("3")
+        INTERNAL("3"),
+        @SerializedName("4")
+        ON_CHAIN("4");
+
+        private String code;
+
+        Destination(String code) {
+            this.code = code;
+        }
+
+        public String toString() {
+            return code;
+        }
+    }
 
     @Override
     public String toString() {
         return "Withdrawal{" +
-                "ccy='" + ccy + '\'' +
+                "ccy='" + currency + '\'' +
                 ", chain='" + chain + '\'' +
-                ", amt='" + amt + '\'' +
-                ", dest='" + dest + '\'' +
-                ", toAddr='" + toAddr + '\'' +
+                ", amt='" + amount + '\'' +
+                ", dest='" + destination + '\'' +
+                ", toAddr='" + toAddress + '\'' +
                 ", clientId='" + clientId + '\'' +
-                ", wdId='" + wdId + '\'' +
+                ", wdId='" + withdrawalId + '\'' +
                 ", invoice='" + invoice + '\'' +
                 ", memo='" + memo + '\'' +
                 ", fee='" + fee + '\'' +
@@ -36,12 +60,12 @@ public class Withdrawal {
         this.areaCode = areaCode;
     }
 
-    public String getWdId() {
-        return wdId;
+    public String getWithdrawalId() {
+        return withdrawalId;
     }
 
-    public void setWdId(String wdId) {
-        this.wdId = wdId;
+    public void setWithdrawalId(String withdrawalId) {
+        this.withdrawalId = withdrawalId;
     }
 
     private String invoice;
@@ -71,12 +95,12 @@ public class Withdrawal {
 
 
 
-    public String getCcy() {
-        return ccy;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setCcy(String ccy) {
-        this.ccy = ccy;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 
     public String getChain() {
@@ -87,28 +111,28 @@ public class Withdrawal {
         this.chain = chain;
     }
 
-    public String getAmt() {
-        return amt;
+    public String getAmount() {
+        return amount;
     }
 
-    public void setAmt(String amt) {
-        this.amt = amt;
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
-    public String getDest() {
-        return dest;
+    public Destination getDestination() {
+        return destination;
     }
 
-    public void setDest(String dest) {
-        this.dest = dest;
+    public void setDestination(Destination destination) {
+        this.destination = destination;
     }
 
-    public String getToAddr() {
-        return toAddr;
+    public String getToAddress() {
+        return toAddress;
     }
 
-    public void setToAddr(String toAddr) {
-        this.toAddr = toAddr;
+    public void setToAddress(String toAddress) {
+        this.toAddress = toAddress;
     }
 
     public String getFee() {

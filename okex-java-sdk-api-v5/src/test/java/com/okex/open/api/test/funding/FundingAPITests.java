@@ -126,15 +126,15 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void Withdrawal() {
         Withdrawal withdrawal = new Withdrawal();
-        withdrawal.setCcy("USDT");
+        withdrawal.setCurrency("USDT");
         withdrawal.setChain("");
-        withdrawal.setAmt("100");
-        withdrawal.setDest("3");
-        withdrawal.setToAddr("46674851");
+        withdrawal.setAmount("100");
+        withdrawal.setDestination(Withdrawal.Destination.INTERNAL);
+        withdrawal.setToAddress("46674851");
         withdrawal.setFee("1");
         withdrawal.setClientId(null);
         withdrawal.setAreaCode(null);
-        JSONObject result = fundingAPIService.Withdrawal(withdrawal);
+        OkexResponse<List<WithdrawResult>> result = fundingAPIService.withdrawal(withdrawal);
         toResultString(LOG, "result", result);
     }
 
@@ -191,7 +191,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void withdrawalLightning() {
         Withdrawal withdrawal = new Withdrawal();
-        withdrawal.setCcy("");
+        withdrawal.setCurrency("");
         withdrawal.setInvoice("");
         JSONObject result = fundingAPIService.withdrawalLightning(withdrawal);
         toResultString(LOG, "result", result);
@@ -262,7 +262,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
     @Test
     public void cancelWithdrawal() {
         Withdrawal cancelWithdrawal = new Withdrawal();
-        cancelWithdrawal.setWdId("");
+        cancelWithdrawal.setWithdrawalId("");
         JSONObject result = fundingAPIService.cancelWithdrawal(cancelWithdrawal);
         toResultString(LOG, "result", result);
     }

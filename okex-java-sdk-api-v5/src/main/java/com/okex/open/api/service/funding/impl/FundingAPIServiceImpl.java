@@ -2,10 +2,8 @@ package com.okex.open.api.service.funding.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.funding.Currency;
-import com.okex.open.api.bean.funding.DepositAddress;
-import com.okex.open.api.bean.funding.FundingBalance;
-import com.okex.open.api.bean.funding.TransferResult;
+import com.google.gson.Gson;
+import com.okex.open.api.bean.funding.*;
 import com.okex.open.api.bean.funding.param.*;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
@@ -62,8 +60,8 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //提币 Withdrawal
     @Override
-    public JSONObject Withdrawal(Withdrawal withdrawal) {
-        return this.client.executeSync(this.api.Withdrawal(JSONObject.parseObject(JSON.toJSONString(withdrawal))));
+    public OkexResponse<List<WithdrawResult>> withdrawal(Withdrawal withdrawal) {
+        return this.client.executeSync(this.api.withdrawal(JSONObject.parseObject(new Gson().toJson(withdrawal))));
     }
 
     //获取提币记录 Get Withdrawal History
