@@ -46,7 +46,6 @@ public class Withdrawal {
                 ", clientId='" + clientId + '\'' +
                 ", wdId='" + withdrawalId + '\'' +
                 ", invoice='" + invoice + '\'' +
-                ", memo='" + memo + '\'' +
                 ", fee='" + fee + '\'' +
                 ", areaCode='" + areaCode + '\'' +
                 '}';
@@ -70,16 +69,6 @@ public class Withdrawal {
 
     private String invoice;
 
-    public String getMemo() {
-        return memo;
-    }
-
-    public void setMemo(String memo) {
-        this.memo = memo;
-    }
-
-    private String memo;
-
     public String getClientId() {
         return clientId;
     }
@@ -89,10 +78,6 @@ public class Withdrawal {
     }
 
     private String fee;
-
-
-
-
 
 
     public String getCurrency() {
