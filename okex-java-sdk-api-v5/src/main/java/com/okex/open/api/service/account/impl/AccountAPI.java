@@ -2,10 +2,7 @@ package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.account.param.*;
-import com.okex.open.api.bean.account.result.AccountBalance;
-import com.okex.open.api.bean.account.result.AdjustPositionResult;
-import com.okex.open.api.bean.account.result.Position;
-import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
+import com.okex.open.api.bean.account.result.*;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
@@ -86,7 +83,7 @@ public interface AccountAPI {
 
     //获取交易产品最大可借 Get the maximum loan of instrument
     @GET("/api/v5/account/max-loan")
-    Call<JSONObject> getTheMaximumLoanOfIsolatedMARGIN(@Query("instId")String instId,@Query("mgnMode")String mgnMode,@Query("mgnCcy")String mgnCcy);
+    Call<OkexResponse<List<MaxMarginLoanResult>>> getMaxMarginLoan(@Query("instId")String instId, @Query("mgnMode")String mgnMode, @Query("mgnCcy")String mgnCcy);
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @GET("/api/v5/account/trade-fee")
@@ -150,7 +147,7 @@ public interface AccountAPI {
 
     //获取借币利率与限额  Get borrow interest and limit
     @GET("/api/v5/account/interest-limits")
-    Call<JSONObject> getInterestLimits(@Query("type") String type,@Query("ccy") String ccy);
+    Call<OkexResponse<List<InterestAndBorrowLimit>>> getInterestLimits(@Query("type") String type,@Query("ccy") String ccy);
 
     //组合保证金的虚拟持仓保证金计算 Position builder
     @POST("/api/v5/account/simulated_margin")

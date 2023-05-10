@@ -2,11 +2,8 @@ package com.okex.open.api.service.account.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.okex.open.api.bean.account.result.AccountBalance;
+import com.okex.open.api.bean.account.result.*;
 import com.okex.open.api.bean.account.param.*;
-import com.okex.open.api.bean.account.result.AdjustPositionResult;
-import com.okex.open.api.bean.account.result.Position;
-import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
@@ -106,8 +103,8 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取币币逐仓杠杆最大可借 Get the maximum loan of instrument
     @Override
-    public JSONObject getTheMaximumLoanOfIsolatedMARGIN(String instId,String mgnMode,String mgnCcy) {
-        return this.client.executeSync(this.api.getTheMaximumLoanOfIsolatedMARGIN(instId,mgnMode,mgnCcy));
+    public OkexResponse<List<MaxMarginLoanResult>> getMaxMarginLoan(String instId, String mgnMode, String mgnCcy) {
+        return this.client.executeSync(this.api.getMaxMarginLoan(instId,mgnMode,mgnCcy));
     }
 
     //获取当前账户交易手续费费率 Get Fee Rates
@@ -202,7 +199,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取借币利率与限额  Get borrow interest and limit
     @Override
-    public JSONObject getInterestLimits(String type, String ccy) {
+    public OkexResponse<List<InterestAndBorrowLimit>> getInterestLimits(String type, String ccy) {
         return this.client.executeSync(this.api.getInterestLimits(type,ccy));
     }
 

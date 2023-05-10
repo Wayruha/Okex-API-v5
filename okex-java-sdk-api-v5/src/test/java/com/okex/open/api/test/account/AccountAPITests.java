@@ -3,11 +3,8 @@ package com.okex.open.api.test.account;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.account.AdjustType;
 import com.okex.open.api.bean.account.PositionSide;
-import com.okex.open.api.bean.account.result.AccountBalance;
+import com.okex.open.api.bean.account.result.*;
 import com.okex.open.api.bean.account.param.*;
-import com.okex.open.api.bean.account.result.AdjustPositionResult;
-import com.okex.open.api.bean.account.result.Position;
-import com.okex.open.api.bean.account.result.QuickMarginRepayResult;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.account.AccountAPIService;
@@ -188,7 +185,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getTheMaximumLoanOfIsolatedMARGIN(){
-        JSONObject result = this.accountAPIService.getTheMaximumLoanOfIsolatedMARGIN("BTC-USDT","cross","BTC");
+        OkexResponse<List<MaxMarginLoanResult>> result = this.accountAPIService.getMaxMarginLoan("BTC-USDT","cross","BTC");
         toResultString(LOG, "result", result);
     }
 
@@ -363,7 +360,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getInterestLimits(){
-        JSONObject result = this.accountAPIService.getInterestLimits("1","BTC");
+        OkexResponse<List<InterestAndBorrowLimit>> result = this.accountAPIService.getInterestLimits("1","BTC");
         toResultString(LOG, "result", result);
     }
 
