@@ -33,9 +33,13 @@ public class PublicDataAPITest extends PublicDataAPIBaseTest {
      */
     @Test
     public void getInstruments() {
-        OkexResponse<List<Instrument>> result = publicDataAPIService.getInstruments("SPOT",null,"",null);
-        toResultString(LOG, "result", result);
-
+        try {
+            OkexResponse<List<Instrument>> result = publicDataAPIService.getInstruments("SPOT", null, "", null);
+            toResultString(LOG, "result", result);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
 

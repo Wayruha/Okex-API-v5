@@ -1,5 +1,6 @@
 package com.okex.open.api.bean.other;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 import lombok.AllArgsConstructor;
@@ -13,15 +14,15 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SpotOrderBook {
-
-
     private List<SpotOrderBookItem> asks;
     private List<SpotOrderBookItem> bids;
     private String ts;
     private int checksum;
     private OrderBookDiffer differ = new OrderBookDiffer();
     private OrderBookChecksumer checksumer = new OrderBookChecksumer();
+    private String seqId;
 
     private HashFunction crc32 = Hashing.crc32();
 
@@ -64,8 +65,8 @@ public class SpotOrderBook {
 
     //调用这个方法，that为增量的数据，this为老的数据
     public SpotOrderBookDiff diff(SpotOrderBook that) {
-        System.out.println("全量数据："+this.toString());
-        System.out.println(that.ts+"  增量数据："+that.toString());
+//        System.out.println("全量数据："+ this);
+//        System.out.println(that.ts+"  增量数据："+ that);
         //深度合并 添加参数 order: 1正向排序  2反向排序   20200507
         //深度合并ask
         final List<SpotOrderBookItem> askDiff = this.diff(this.getAsks(), that.getAsks(), Comparator.naturalOrder(),1);
