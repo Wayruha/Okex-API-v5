@@ -33,8 +33,8 @@ public class MarketDataAPITest extends MarketDataAPIBaseTest {
      */
     @Test
     public void getTickers() {
-        JSONObject result = this.marketDataAPIService.getTickers("FUTURES","","BTC-USDT");
-        this.toResultString(MarketDataAPITest.LOG, "result", result);
+        final OkexResponse<List<Ticker>> tickers = this.marketDataAPIService.getTickers("FUTURES", "", "BTC-USDT");
+        this.toResultString(MarketDataAPITest.LOG, "result", tickers.getData());
     }
 
 

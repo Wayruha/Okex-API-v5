@@ -16,7 +16,7 @@ public interface MarketDataAPI {
 
     //获取所有产品行情信息 Get Tickers
     @GET("/api/v5/market/tickers")
-    Call<JSONObject> getTickers(@Query("instType") String instType,@Query("instFamily") String instFamily, @Query("uly") String uly);
+    Call<OkexResponse<List<Ticker>>> getTickers(@Query("instType") String instType,@Query("instFamily") String instFamily, @Query("uly") String uly);
 
     //获取单个产品行情信息 Get Ticker
     @GET("/api/v5/market/ticker")

@@ -22,7 +22,7 @@ public class MarketDataAPIServiceImpl implements MarketDataAPIService {
 
     //获取所有产品行情信息 Get Tickers
     @Override
-    public JSONObject getTickers(String instType,String instFamily, String uly) {
+    public OkexResponse<List<Ticker>> getTickers(String instType,String instFamily, String uly) {
         return this.client.executeSync(this.marketDataAPI.getTickers(instType,instFamily,uly));
     }
 

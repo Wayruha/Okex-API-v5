@@ -14,7 +14,7 @@ import java.util.List;
 public interface MarketDataAPIService {
 
     //获取所有产品行情信息 Get Tickers
-    JSONObject getTickers(String instType,String instFamily,String uly);
+    OkexResponse<List<Ticker>> getTickers(String instType,String instFamily,String uly);
 
     //获取单个产品行情信息 Get Ticker
     OkexResponse<List<Ticker>> getTicker(String instId);
