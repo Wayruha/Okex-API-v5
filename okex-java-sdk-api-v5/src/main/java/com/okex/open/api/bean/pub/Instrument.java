@@ -51,7 +51,7 @@ public class Instrument {
     @SerializedName("maxLmtSz")
     private BigDecimal maxLimitSize;
     @SerializedName("maxMktSz")
-    private BigDecimal maxMarketSize;
+    private BigDecimal maxMarketQuoteSize;
     @SerializedName("maxTwapSz")
     private BigDecimal maxTwapSize;
     @SerializedName("maxIcebergSz")
@@ -59,5 +59,5 @@ public class Instrument {
     @SerializedName("maxTriggerSz")
     private BigDecimal maxTriggerSize;
     @SerializedName("maxStopSz")
-    private BigDecimal maxStopSize;
+    private BigDecimal maxStopQuoteSize;
 }
