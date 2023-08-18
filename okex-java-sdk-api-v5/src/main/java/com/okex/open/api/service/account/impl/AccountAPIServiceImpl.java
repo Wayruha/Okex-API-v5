@@ -109,7 +109,7 @@ public class AccountAPIServiceImpl implements AccountAPIService {
 
     //获取当前账户交易手续费费率 Get Fee Rates
     @Override
-    public JSONObject getFeeRates(String instType, String instId, String uly,String instFamily) {
+    public OkexResponse<List<TradeFeeData>> getFeeRates(String instType, String instId, String uly,String instFamily) {
         return this.client.executeSync(this.api.getFeeRates(instType,instId,uly,instFamily));
     }
 

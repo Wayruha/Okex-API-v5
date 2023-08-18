@@ -195,7 +195,7 @@ public class AccountAPITests extends  AccountAPIBaseTests {
      */
     @Test
     public void getFeeRates(){
-        JSONObject result = this.accountAPIService.getFeeRates("SWAP",null,"BTC-USDT","");
+        OkexResponse<List<TradeFeeData>> result = this.accountAPIService.getFeeRates("SWAP",null,"BTC-USDT","");
         toResultString(LOG, "result", result);
     }
 
