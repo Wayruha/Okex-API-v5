@@ -3,6 +3,7 @@ package com.okex.open.api.service.funding;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.*;
 import com.okex.open.api.bean.funding.param.*;
+import com.okex.open.api.bean.other.DepositInfo;
 import com.okex.open.api.service.OkexResponse;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface FundingAPIService {
     OkexResponse<List<DepositAddress>> getDepositAddress(String ccy);
 
     //获取充值记录 Get Deposit History
-    JSONObject getDepositHistory(String ccy,String txId,String type,String state,String after,String before,String limit,String depId);
+    OkexResponse<List<DepositInfo>> getDepositHistory(String ccy, String txId, String type, String state, String after, String before, String limit, String depId);
 
     //提币 Withdrawal
     OkexResponse<List<WithdrawResult>> withdrawal(Withdrawal withdrawal);

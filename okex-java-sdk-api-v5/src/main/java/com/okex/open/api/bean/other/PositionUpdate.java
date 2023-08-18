@@ -1,7 +1,7 @@
 package com.okex.open.api.bean.other;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import com.okex.open.api.bean.pub.InstrumentType;
 import com.okex.open.api.bean.pub.MarginMode;
 import lombok.AllArgsConstructor;
@@ -24,7 +24,7 @@ public class PositionUpdate {
     @AllArgsConstructor
     @NoArgsConstructor
     public class BalanceData {
-        @JsonProperty("ccy")
+        @SerializedName("ccy")
         private String ccy;
         private String cashBal;
         private String uTime;
@@ -40,12 +40,12 @@ public class PositionUpdate {
         private InstrumentType instType;
         private MarginMode mgnMode;
         private String posSide;
-        @JsonProperty("pos")
+        @SerializedName("pos")
         private String positionQty;
-        @JsonProperty("ccy")
+        @SerializedName("ccy")
         private String ccy;
         private String posCcy;
-        @JsonProperty("avgPx")
+        @SerializedName("avgPx")
         private String avgOpenPrice;
         private String uTIme;
     }

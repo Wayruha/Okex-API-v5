@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.okex.open.api.bean.funding.*;
 import com.okex.open.api.bean.funding.param.*;
+import com.okex.open.api.bean.other.DepositInfo;
 import com.okex.open.api.client.APIClient;
 import com.okex.open.api.config.APIConfiguration;
 import com.okex.open.api.service.OkexResponse;
@@ -54,7 +55,7 @@ public class FundingAPIServiceImpl implements FundingAPIService {
 
     //获取充值记录 Get Deposit History
     @Override
-    public JSONObject getDepositHistory(String ccy, String txId,String type, String state, String after, String before, String limit,String depId) {
+    public OkexResponse<List<DepositInfo>> getDepositHistory(String ccy, String txId, String type, String state, String after, String before, String limit, String depId) {
         return this.client.executeSync(this.api.getDepositHistory(ccy,txId,type,state,after,before,limit,depId));
     }
 

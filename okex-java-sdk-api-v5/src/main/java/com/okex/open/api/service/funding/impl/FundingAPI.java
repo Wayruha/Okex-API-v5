@@ -3,6 +3,7 @@ package com.okex.open.api.service.funding.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.*;
 import com.okex.open.api.bean.funding.param.FundsTransfer;
+import com.okex.open.api.bean.other.DepositInfo;
 import com.okex.open.api.service.OkexResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -34,7 +35,7 @@ public interface FundingAPI {
 
     //获取充值记录 Get Deposit History
     @GET("/api/v5/asset/deposit-history")
-    Call<JSONObject> getDepositHistory(@Query("ccy") String ccy,@Query("txId") String txId,@Query("type") String type,@Query("state")String state,@Query("after")String after,@Query("before")String before,@Query("limit")String limit,@Query("depId")String depId);
+    Call<OkexResponse<List<DepositInfo>>> getDepositHistory(@Query("ccy") String ccy, @Query("txId") String txId, @Query("type") String type, @Query("state")String state, @Query("after")String after, @Query("before")String before, @Query("limit")String limit, @Query("depId")String depId);
 
     //提币 Withdrawal
     @POST("/api/v5/asset/withdrawal")

@@ -3,6 +3,7 @@ package com.okex.open.api.test.funding;
 import com.alibaba.fastjson.JSONObject;
 import com.okex.open.api.bean.funding.*;
 import com.okex.open.api.bean.funding.param.*;
+import com.okex.open.api.bean.other.DepositInfo;
 import com.okex.open.api.service.OkexResponse;
 import com.okex.open.api.service.funding.FundingAPIService;
 import com.okex.open.api.service.funding.impl.FundingAPIServiceImpl;
@@ -115,7 +116,7 @@ public class FundingAPITests extends FundingAPIBaseTests {
      */
     @Test
     public void getDepositHistory() {
-        JSONObject result = fundingAPIService.getDepositHistory("BTC", "","", "", "", "","","");
+        OkexResponse<List<DepositInfo>> result = fundingAPIService.getDepositHistory("BTC", "","", "", "", "","","");
         toResultString(LOG, "result", result);
     }
 
