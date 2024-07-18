@@ -9,18 +9,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepositAddress {
-    @SerializedName("addr")
-    private String address;
-    private String tag;
-    private String memo;
-    @SerializedName("pmtId")
-    private String paymentId;
-    private String addrEx;
-    @SerializedName("ccy")
-    private String currency;
-    private String chain;
-    private String to;
-    private Boolean selected;
-    @SerializedName("ctAddr")
-    private String contractAddress;
+  @SerializedName("addr")
+  private String address;
+  private String tag;
+  private String memo;
+  @SerializedName("pmtId")
+  private String paymentId;
+  private Object addrEx;
+  @SerializedName("ccy")
+  private String currency;
+  private String chain;
+  private String to;
+  private Boolean selected;
+  @SerializedName("ctAddr")
+  private String contractAddress;
 }
